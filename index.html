@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smash Mídias — Tecnologia sob medida pro seu nicho</title>
+<meta name="description" content="Smash Mídias cria software de nicho para negócios reais: agendamento para salões e barbearias, gestão para equipes de corrida, e mais.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #121011;
+    --bg-alt: #17141A;
+    --ink: #F2ECDF;
+    --gold: #D6A03D;
+    --ember: #C6432E;
+    --violet: #8B5CE0;
+    --panel: #1C1917;
+    --panel-line: rgba(242,236,223,0.10);
+    --muted: rgba(242,236,223,0.62);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+  img { max-width: 100%; display: block; }
+
+  .wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .swoosh {
+    position: relative;
+    display: inline-block;
+  }
+  .swoosh::after {
+    content: "";
+    position: absolute;
+    left: -6%;
+    right: -6%;
+    top: 46%;
+    height: 38%;
+    background: linear-gradient(100deg, var(--gold) 0%, var(--ember) 100%);
+    transform: skewY(-3deg);
+    z-index: -1;
+    opacity: 0.9;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 26px 0;
+    position: sticky;
+    top: 0;
+    background: rgba(18,16,17,0.86);
+    backdrop-filter: blur(8px);
+    z-index: 20;
+  }
+
+  .brand {
+    font-family: 'Anton', sans-serif;
+    font-size: 21px;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .brand em {
+    font-style: normal;
+    background: linear-gradient(100deg, var(--gold), var(--ember));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .logo-chip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .logo-chip img {
+    height: 38px;
+    width: auto;
+    object-fit: contain;
+  }
+  .logo-chip .wordmark {
+    font-family: 'Anton', sans-serif;
+    font-size: 19px;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  nav { display: flex; align-items: center; gap: 26px; }
+  nav a {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--muted);
+  }
+  nav a:hover { color: var(--ink); }
+
+  .nav-cta {
+    padding: 9px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--panel-line);
+    color: var(--ink) !important;
+    font-weight: 600 !important;
+  }
+  .nav-cta:hover { border-color: var(--gold); color: var(--gold) !important; }
+
+  .hero {
+    padding: 72px 0 88px;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 22px;
+  }
+
+  h1 {
+    font-family: 'Anton', sans-serif;
+    font-weight: 400;
+    font-size: clamp(34px, 4.6vw, 54px);
+    line-height: 1.08;
+    text-transform: uppercase;
+  }
+
+  .hero p.lead {
+    margin-top: 22px;
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 50ch;
+  }
+
+  .cta-row { margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 22px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    border: 1px solid transparent;
+  }
+  .btn-solid {
+    background: linear-gradient(100deg, var(--gold), var(--ember));
+    color: #17120C;
+  }
+  .btn-solid:hover { filter: brightness(1.08); }
+  .btn-outline { border-color: var(--panel-line); color: var(--ink); }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-visual {
+    position: relative;
+    height: 380px;
+  }
+  .stack-card {
+    position: absolute;
+    width: 78%;
+    border-radius: 18px;
+    padding: 18px;
+    border: 1px solid var(--panel-line);
+  }
+  .stack-1 {
+    background: linear-gradient(145deg, #241C18, #17120E);
+    top: 0; left: 0;
+    height: 190px;
+    z-index: 1;
+  }
+  .stack-2 {
+    background: linear-gradient(145deg, #7A2E4A, #3d1729);
+    top: 90px; left: 20%;
+    height: 190px;
+    z-index: 2;
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.6);
+  }
+  .stack-3 {
+    background: linear-gradient(145deg, #1E5C4F, #12332B);
+    top: 180px; left: 8%;
+    height: 170px;
+    z-index: 3;
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.6);
+  }
+  .stack-card .bar { height: 8px; border-radius: 4px; background: rgba(242,236,223,0.18); margin-bottom: 10px; }
+  .stack-card .bar.w60 { width: 60%; }
+  .stack-card .bar.w40 { width: 40%; }
+  .stack-card .dots { display: flex; gap: 6px; margin-bottom: 16px; }
+  .stack-card .dots span { width: 7px; height: 7px; border-radius: 50%; background: rgba(242,236,223,0.3); }
+  .stack-card .metric { font-family: 'JetBrains Mono', monospace; font-size: 22px; color: var(--ink); margin-top: 12px; }
+  .stack-card .metric-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(242,236,223,0.55); }
+
+  section.capacidades {
+    padding: 64px 0;
+    border-top: 1px solid var(--panel-line);
+  }
+
+  .cap-head { max-width: 640px; margin-bottom: 40px; }
+  .cap-head h2 {
+    font-family: 'Anton', sans-serif;
+    font-weight: 400;
+    font-size: clamp(26px, 3.4vw, 36px);
+    text-transform: uppercase;
+    line-height: 1.15;
+  }
+  .cap-head p { margin-top: 14px; color: var(--muted); font-size: 16px; }
+
+  .cap-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .cap-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px;
+    border: 1px solid var(--panel-line);
+    border-radius: 14px;
+    background: var(--bg-alt);
+  }
+  .cap-badge {
+    flex-shrink: 0;
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    background: rgba(214,160,61,0.12);
+    color: var(--gold);
+    border: 1px solid rgba(214,160,61,0.25);
+  }
+  .cap-item span.label { font-size: 14px; font-weight: 500; }
+
+  section.solutions { padding: 72px 0; border-top: 1px solid var(--panel-line); }
+
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 22px; }
+
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--panel-line);
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    min-height: 320px;
+  }
+
+  .card .chip {
+    width: 100%; height: 84px;
+    border-radius: 14px;
+    margin-bottom: 22px;
+    position: relative;
+    overflow: hidden;
+  }
+  .chip-beleza { background: linear-gradient(135deg, #7A2E4A 0%, #3d1729 100%); }
+  .chip-corre { background: linear-gradient(135deg, #1E5C4F 0%, #12332B 100%); }
+  .chip span {
+    position: absolute; left: 18px; bottom: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+    opacity: 0.85;
+  }
+
+  .status {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: #4CA868; display: inline-block; }
+  .dot.pilot { background: var(--gold); }
+
+  .card h3 {
+    font-family: 'Anton', sans-serif; font-weight: 400; font-size: 25px;
+    text-transform: uppercase; margin-bottom: 10px;
+  }
+  .card p.desc { color: var(--muted); font-size: 14.5px; flex-grow: 1; }
+
+  .card .features {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-top: 16px;
+  }
+  .feature-pill {
+    font-size: 12px;
+    padding: 5px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--panel-line);
+    color: var(--muted);
+  }
+
+  .card-cta {
+    margin-top: 22px;
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 14px; font-weight: 600;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 999px;
+    width: fit-content;
+  }
+  .cta-solid { background: var(--ink); color: var(--bg); }
+  .cta-solid:hover { background: var(--gold); }
+  .cta-outline { border: 1px solid var(--panel-line); color: var(--ink); }
+  .cta-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  .card-soon {
+    background: radial-gradient(circle at 20% -10%, rgba(139,92,224,0.16), transparent 55%), var(--panel);
+    border: 1px solid rgba(139,92,224,0.28);
+    border-radius: 20px;
+    padding: 34px;
+  }
+  .card-soon .k {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--violet);
+    margin-bottom: 10px;
+  }
+  .card-soon h3 {
+    font-family: 'Anton', sans-serif; font-weight: 400; font-size: 24px;
+    text-transform: uppercase; margin-bottom: 18px;
+  }
+  .soon-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  .soon-item {
+    font-size: 13px;
+    padding: 12px 10px;
+    text-align: center;
+    border: 1px solid rgba(139,92,224,0.22);
+    border-radius: 10px;
+    color: var(--muted);
+  }
+
+  section.ecosystem { padding: 72px 0; border-top: 1px solid var(--panel-line); }
+  .eco-tree {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    position: relative;
+    padding-top: 44px;
+  }
+  .eco-tree::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 16.5%; right: 16.5%;
+    height: 1px;
+    background: var(--panel-line);
+  }
+  .eco-node {
+    position: relative;
+    text-align: center;
+    padding-top: 24px;
+  }
+  .eco-node::before {
+    content: "";
+    position: absolute;
+    top: -24px; left: 50%;
+    width: 1px; height: 24px;
+    background: var(--panel-line);
+  }
+  .eco-node .name {
+    font-family: 'Anton', sans-serif;
+    font-size: 17px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .eco-node ul { list-style: none; font-size: 13px; color: var(--muted); }
+  .eco-node li { padding: 3px 0; }
+  .eco-root {
+    text-align: center;
+    font-family: 'Anton', sans-serif;
+    font-size: 15px;
+    text-transform: uppercase;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+  }
+
+  section.process { padding: 72px 0; border-top: 1px solid var(--panel-line); }
+  .process-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px 16px;
+    margin-top: 40px;
+  }
+  .process-step .n {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .process-step h4 {
+    font-size: 15px; font-weight: 600; margin-bottom: 6px;
+  }
+  .process-step p { font-size: 13px; color: var(--muted); }
+
+  section.why { padding: 72px 0; border-top: 1px solid var(--panel-line); }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 36px;
+  }
+  .why-card {
+    padding: 22px;
+    border: 1px solid var(--panel-line);
+    border-radius: 16px;
+  }
+  .why-card h4 { font-size: 15.5px; font-weight: 600; margin-bottom: 8px; }
+  .why-card p { font-size: 13.5px; color: var(--muted); }
+
+  section.manifesto {
+    padding: 88px 0;
+    border-top: 1px solid var(--panel-line);
+    text-align: center;
+  }
+  .manifesto h2 {
+    font-family: 'Anton', sans-serif;
+    font-weight: 400;
+    font-size: clamp(28px, 4vw, 40px);
+    text-transform: uppercase;
+    max-width: 18ch;
+    margin: 0 auto 20px;
+  }
+  .manifesto p {
+    max-width: 58ch;
+    margin: 0 auto;
+    color: var(--muted);
+    font-size: 16px;
+  }
+
+  section.testimonials { padding: 72px 0; border-top: 1px solid var(--panel-line); }
+  .t-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 36px; }
+  .t-card {
+    padding: 26px;
+    border: 1px solid var(--panel-line);
+    border-radius: 16px;
+    background: var(--bg-alt);
+  }
+  .t-card .stars { color: var(--gold); font-size: 14px; margin-bottom: 14px; letter-spacing: 2px; }
+  .t-card p.quote { font-size: 15.5px; margin-bottom: 16px; }
+  .t-card .who { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+
+  section.final-cta {
+    padding: 80px 0 96px;
+    border-top: 1px solid var(--panel-line);
+    text-align: center;
+  }
+  .final-cta h2 {
+    font-family: 'Anton', sans-serif; font-weight: 400;
+    font-size: clamp(26px, 3.8vw, 38px);
+    text-transform: uppercase;
+    max-width: 20ch;
+    margin: 0 auto 28px;
+  }
+
+  footer {
+    border-top: 1px solid var(--panel-line);
+    padding: 28px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  footer a { color: var(--muted); text-decoration: none; margin-left: 18px; }
+  footer a:hover { color: var(--gold); }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; padding: 44px 0 56px; }
+    .hero-visual { order: -1; height: 300px; }
+    .cap-grid { grid-template-columns: 1fr 1fr; }
+    .cards { grid-template-columns: 1fr; }
+    .soon-grid { grid-template-columns: repeat(2, 1fr); }
+    .eco-tree { grid-template-columns: 1fr; gap: 30px; }
+    .eco-tree::before { display: none; }
+    .eco-node::before { display: none; }
+    .process-row { grid-template-columns: 1fr 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .t-grid { grid-template-columns: 1fr; }
+    nav a:not(.nav-cta) { display: none; }
+    footer { flex-direction: column; text-align: center; }
+    footer a { margin: 0 8px; }
+  }
+
+  @media (max-width: 480px) {
+    .cap-grid { grid-template-columns: 1fr; }
+    .process-row { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="wrap">
+    <header>
+      <a class="logo-chip" href="#top">
+        <img src="assets/logo-smash-v2-cropped.png" alt="Smash Mídias">
+      </a>
+      <nav>
+        <a href="#produtos">Produtos</a>
+        <a href="#ecossistema">Ecossistema</a>
+        <a href="#como-trabalhamos">Como trabalhamos</a>
+        <a class="nav-cta" href="#contato">Solicitar orçamento</a>
+      </nav>
+    </header>
+  </div>
+
+  <div class="wrap" id="top">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Da agência de crescimento à tecnologia própria</div>
+        <h1><span class="swoosh">Transformamos ideias</span><br>em aplicativos que<br>impulsionam negócios.</h1>
+        <p class="lead">A Smash Mídias já ajuda negócios a crescerem nas redes sociais. Agora, construímos a tecnologia por trás deles: plataformas de nicho que automatizam a rotina, organizam a operação e fazem cada negócio parecer maior do que é.</p>
+        <div class="cta-row">
+          <a class="btn btn-solid" href="#produtos">Conheça nossos aplicativos</a>
+          <a class="btn btn-outline" href="#contato">Solicitar um orçamento</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="stack-card stack-1">
+          <div class="dots"><span></span><span></span><span></span></div>
+          <div class="bar w60"></div>
+          <div class="bar w40"></div>
+          <div class="metric-label">Agendamentos hoje</div>
+          <div class="metric">24</div>
+        </div>
+        <div class="stack-card stack-2">
+          <div class="dots"><span></span><span></span><span></span></div>
+          <div class="bar w60"></div>
+          <div class="bar w40"></div>
+          <div class="metric-label">Faturamento do mês</div>
+          <div class="metric">+18%</div>
+        </div>
+        <div class="stack-card stack-3">
+          <div class="dots"><span></span><span></span><span></span></div>
+          <div class="bar w60"></div>
+          <div class="bar w40"></div>
+          <div class="metric-label">Treinos da semana</div>
+          <div class="metric">12</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <section class="capacidades">
+      <div class="cap-head">
+        <h2>Sua ideia pode ser o próximo grande aplicativo.</h2>
+        <p>Você não precisa só de um aplicativo. Precisa de algo que economize tempo, organize o negócio e ajude a faturar mais. Nós cuidamos do desenvolvimento inteiro enquanto você foca em crescer.</p>
+      </div>
+      <div class="cap-grid">
+        <div class="cap-item"><div class="cap-badge">AND</div><span class="label">Aplicativos Android</span></div>
+        <div class="cap-item"><div class="cap-badge">iOS</div><span class="label">Aplicativos iPhone</span></div>
+        <div class="cap-item"><div class="cap-badge">WEB</div><span class="label">Sistemas web</span></div>
+        <div class="cap-item"><div class="cap-badge">DB</div><span class="label">Banco de dados em nuvem</span></div>
+        <div class="cap-item"><div class="cap-badge">IA</div><span class="label">Inteligência artificial</span></div>
+        <div class="cap-item"><div class="cap-badge">BI</div><span class="label">Dashboards inteligentes</span></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <section class="solutions" id="produtos">
+      <div class="cap-head">
+        <h2>Nossos produtos</h2>
+        <p>Um nicho por vez. Cada plataforma nasce da rotina real de quem vai usar — não é template genérico com o nome trocado.</p>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <div class="chip chip-beleza"><span>Salões &amp; barbearias</span></div>
+          <div class="status"><span class="dot"></span> No ar</div>
+          <h3>Beleza em sua Mão</h3>
+          <p class="desc">Agenda, pagamento e WhatsApp automatizados para salões de beleza e barbearias. O cliente marca, remarca e cancela sozinho — o dono só acompanha.</p>
+          <div class="features">
+            <span class="feature-pill">Agenda inteligente</span>
+            <span class="feature-pill">Vale-presente</span>
+            <span class="feature-pill">Assinatura recorrente</span>
+            <span class="feature-pill">WhatsApp automático</span>
+          </div>
+          <a class="card-cta cta-solid" href="https://belezaemsuamao.com.br" target="_blank" rel="noopener">Conhecer plataforma →</a>
+        </div>
+
+        <div class="card">
+          <div class="chip chip-corre"><span>Equipes de corrida</span></div>
+          <div class="status"><span class="dot pilot"></span> Rodando com equipe piloto</div>
+          <h3>Corre Mais</h3>
+          <p class="desc">Gestão de treinos, provas e comunicação para equipes de corrida — pensado pra quem organiza o grupo, não pra corredor solo. Hoje em uso real por uma equipe piloto, sendo preparado para atender qualquer equipe.</p>
+          <div class="features">
+            <span class="feature-pill">Calendário de treinos</span>
+            <span class="feature-pill">Provas &amp; ranking</span>
+            <span class="feature-pill">Comunidade</span>
+          </div>
+          <a class="card-cta cta-outline" href="#contato">Quero ser avisado →</a>
+        </div>
+      </div>
+
+      <div class="card-soon">
+        <div class="k">Próximos aplicativos</div>
+        <h3>Em breve...</h3>
+        <div class="soon-grid">
+          <div class="soon-item">Beach Tennis</div>
+          <div class="soon-item">Academias</div>
+          <div class="soon-item">Restaurantes</div>
+          <div class="soon-item">Imobiliárias</div>
+          <div class="soon-item">Condomínios</div>
+          <div class="soon-item">CRM Comercial</div>
+          <div class="soon-item">Pet Shops</div>
+          <div class="soon-item">E muito mais...</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <section class="ecosystem" id="ecossistema">
+      <div class="cap-head">
+        <h2>O ecossistema Smash</h2>
+        <p>Não é um aplicativo isolado. É uma plataforma em expansão constante, um nicho de cada vez.</p>
+      </div>
+      <div class="eco-root">Smash Mídias</div>
+      <div class="eco-tree">
+        <div class="eco-node">
+          <div class="name">Beleza em sua Mão</div>
+          <ul>
+            <li>Salões de beleza</li>
+            <li>Barbearias</li>
+            <li>Estética</li>
+            <li>Agendamentos</li>
+          </ul>
+        </div>
+        <div class="eco-node">
+          <div class="name">Corre Mais</div>
+          <ul>
+            <li>Equipes de corrida</li>
+            <li>Treinos &amp; provas</li>
+            <li>Ranking</li>
+            <li>Comunidade</li>
+          </ul>
+        </div>
+        <div class="eco-node">
+          <div class="name">Próximos apps</div>
+          <ul>
+            <li>Beach Tennis</li>
+            <li>Academias</li>
+            <li>Restaurantes</li>
+            <li>Imobiliárias</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <section class="process" id="como-trabalhamos">
+      <div class="cap-head">
+        <h2>Como trabalhamos</h2>
+        <p>O mesmo processo, do primeiro rascunho ao produto rodando de verdade.</p>
+      </div>
+      <div class="process-row">
+        <div class="process-step"><div class="n">01</div><h4>Ideia</h4><p>Entendemos a rotina real do negócio antes de desenhar qualquer tela.</p></div>
+        <div class="process-step"><div class="n">02</div><h4>Planejamento</h4><p>Definimos o que entra na primeira versão — e o que espera.</p></div>
+        <div class="process-step"><div class="n">03</div><h4>Design</h4><p>Cada produto ganha a cara do seu próprio nicho, não um template genérico.</p></div>
+        <div class="process-step"><div class="n">04</div><h4>Desenvolvimento</h4><p>Construção real, com a nossa própria equipe — sem revenda de sistema pronto.</p></div>
+        <div class="process-step"><div class="n">05</div><h4>Testes</h4><p>Validamos com um cliente piloto real antes de abrir pra todo mundo.</p></div>
+        <div class="process-step"><div class="n">06</div><h4>Lançamento</h4><p>O produto vai ao ar com quem já testou no dia a dia.</p></div>
+        <div class="process-step"><div class="n">07</div><h4>Evolução</h4><p>Continuamos ajustando com base no uso real, não em suposição.</p></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <section class="why">
+      <div class="cap-head">
+        <h2>Por que a Smash Mídias</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card"><h4>Desenvolvimento rápido</h4><p>Da ideia ao produto testável em semanas, não em meses.</p></div>
+        <div class="why-card"><h4>Segurança</h4><p>Dados e credenciais tratados com o mesmo cuidado que exigiríamos pra nossos próprios negócios.</p></div>
+        <div class="why-card"><h4>Tecnologia em nuvem</h4><p>Sem servidor pra você administrar, sem instalação complicada.</p></div>
+        <div class="why-card"><h4>Apps modernos</h4><p>Feitos pra rodar bem no bolso do seu cliente, não só no computador.</p></div>
+        <div class="why-card"><h4>Suporte humanizado</h4><p>Você fala com quem construiu o sistema, não com um robô de central de atendimento.</p></div>
+        <div class="why-card"><h4>Evolução constante</h4><p>O produto que você contrata hoje continua sendo melhorado depois.</p></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <section class="manifesto">
+      <h2>O futuro já começou.</h2>
+      <p>Enquanto muitos negócios ainda são administrados em planilha e papel, nossos clientes usam aplicativos próprios pra automatizar processos e ganhar tempo de volta. Acreditamos que todo negócio — pequeno, médio ou de nicho — merece ter sua própria tecnologia.</p>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <section class="testimonials">
+      <div class="cap-head">
+        <h2>Quem já usa</h2>
+      </div>
+      <div class="t-grid">
+        <div class="t-card">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"A gestão da minha barbearia mudou completamente. Cliente marca sozinho, eu só acompanho."</p>
+          <div class="who">Dono de barbearia — cliente piloto, Beleza em sua Mão</div>
+        </div>
+        <div class="t-card">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"O Corre Mais organizou o treino da equipe inteira. Antes era tudo espalhado em grupo de WhatsApp."</p>
+          <div class="who">Atleta — equipe piloto, Corre Mais</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <section class="final-cta" id="contato">
+      <h2>Vamos construir o próximo aplicativo juntos?</h2>
+      <a class="btn btn-solid" href="https://wa.me/5511993047126" target="_blank" rel="noopener">Solicitar orçamento</a>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <footer>
+      <span>© 2026 Smash Mídias — São Bernardo do Campo, SP</span>
+      <span>
+        <a href="https://wa.me/5511993047126" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://www.instagram.com/smashmidias" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/smashmidias" target="_blank" rel="noopener">Facebook</a>
+      </span>
+    </footer>
+  </div>
+
+</body>
+</html>
