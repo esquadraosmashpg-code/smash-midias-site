@@ -260,7 +260,7 @@
 
   section.solutions { padding: 72px 0; border-top: 1px solid var(--panel-line); }
 
-  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 22px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; margin-bottom: 22px; }
 
   .card {
     background: var(--panel);
@@ -281,6 +281,7 @@
   }
   .chip-beleza { background: linear-gradient(135deg, #7A2E4A 0%, #3d1729 100%); }
   .chip-corre { background: linear-gradient(135deg, #1E5C4F 0%, #12332B 100%); }
+  .chip-recepcao { background: linear-gradient(135deg, #2A3F6E 0%, #1B2A4A 100%); }
   .chip span {
     position: absolute; left: 18px; bottom: 14px;
     font-family: 'JetBrains Mono', monospace;
@@ -364,7 +365,7 @@
   .eco-tree {
     margin-top: 40px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     position: relative;
     padding-top: 44px;
@@ -372,7 +373,7 @@
   .eco-tree::before {
     content: "";
     position: absolute;
-    top: 0; left: 16.5%; right: 16.5%;
+    top: 0; left: 12.5%; right: 12.5%;
     height: 1px;
     background: var(--panel-line);
   }
@@ -627,6 +628,20 @@
           </div>
           <a class="card-cta cta-outline" href="#contato">Quero ser avisado →</a>
         </div>
+
+        <div class="card">
+          <div class="chip chip-recepcao"><span>Terapeutas &amp; profissionais de atendimento</span></div>
+          <div class="status"><span class="dot"></span> No ar</div>
+          <h3>Recepção Inteligente</h3>
+          <p class="desc">Site + secretária virtual + agendamento real pra terapeutas, fisioterapeutas, nutricionistas e outros profissionais de atendimento. Pré-atendimento automatizado que qualifica o paciente antes da consulta, agenda direto no Google Calendar e leva pro WhatsApp com o contexto já pronto.</p>
+          <div class="features">
+            <span class="feature-pill">Secretária virtual</span>
+            <span class="feature-pill">Agendamento automático</span>
+            <span class="feature-pill">Integração WhatsApp</span>
+            <span class="feature-pill">Compliance LGPD</span>
+          </div>
+          <a class="card-cta cta-solid" href="https://smash-recepcao-inteligente.vercel.app" target="_blank" rel="noopener">Ver demonstração →</a>
+        </div>
       </div>
 
       <div class="card-soon">
@@ -670,6 +685,15 @@
             <li>Treinos &amp; provas</li>
             <li>Ranking</li>
             <li>Comunidade</li>
+          </ul>
+        </div>
+        <div class="eco-node">
+          <div class="name">Recepção Inteligente</div>
+          <ul>
+            <li>Terapeutas</li>
+            <li>Fisioterapeutas</li>
+            <li>Nutricionistas</li>
+            <li>Consultórios</li>
           </ul>
         </div>
         <div class="eco-node">
