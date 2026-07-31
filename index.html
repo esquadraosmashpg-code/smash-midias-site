@@ -4,789 +4,525 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Smash Mídias — Tecnologia sob medida pro seu nicho</title>
-<meta name="description" content="Smash Mídias cria software de nicho para negócios reais: agendamento para salões e barbearias, gestão para equipes de corrida, e mais.">
+<meta name="description" content="Smash Mídias cria aplicativos e sistemas sob medida para negócios reais: agendamento para salões e barbearias, gestão para equipes de corrida, recepção inteligente para clínicas, e mais.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #121011;
-    --bg-alt: #17141A;
-    --ink: #F2ECDF;
-    --gold: #D6A03D;
-    --ember: #C6432E;
-    --violet: #8B5CE0;
-    --panel: #1C1917;
-    --panel-line: rgba(242,236,223,0.10);
-    --muted: rgba(242,236,223,0.62);
+  :root{
+    --bg:#080808; --bg2:#121212; --bg3:#161616;
+    --gold:#F5B642; --blue:#2D9CFF; --purple:#8A4DFF; --green:#00D68F;
+    --white:#FFFFFF; --gray:#B5B5B5; --line:rgba(255,255,255,0.09);
   }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--white);font-family:'Inter',sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
+  h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;font-weight:600;letter-spacing:-0.01em;}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+  header{position:sticky;top:0;z-index:50;background:rgba(8,8,8,0.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
+  header .inner{display:flex;align-items:center;justify-content:space-between;padding:8px 0;}
+  .logo-lockup{display:flex;align-items:center;gap:14px;}
+  .logo-mark{height:92px;width:auto;filter:drop-shadow(0 0 16px rgba(45,156,255,0.4));}
+  .logo-word{height:50px;width:auto;filter:drop-shadow(0 0 10px rgba(45,156,255,0.25));}
+  nav{display:flex;align-items:center;gap:28px;}
+  nav a{font-size:14px;font-weight:500;color:var(--gray);transition:color .2s;}
+  nav a:hover{color:var(--white);}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;font-size:14px;font-weight:600;border:1px solid transparent;white-space:nowrap;cursor:pointer;transition:transform .15s, filter .15s;}
+  .btn:hover{transform:translateY(-1px);}
+  .btn-gold{background:linear-gradient(100deg,var(--blue),#1668c9);color:#fff;box-shadow:0 8px 24px -8px rgba(45,156,255,0.55);}
+  .btn-gold:hover{filter:brightness(1.12);}
+  .btn-ghost{border-color:var(--line);color:var(--white);background:rgba(255,255,255,0.03);}
+  .btn-ghost:hover{border-color:rgba(255,255,255,0.3);}
 
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: 'Inter', sans-serif;
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-  }
+  .hero{position:relative;padding:88px 0 110px;overflow:hidden;}
+  .aurora{position:absolute;inset:-20% -10%;z-index:0;filter:blur(60px);opacity:0.55;pointer-events:none;}
+  .aurora div{position:absolute;border-radius:50%;}
+  .a1{width:520px;height:520px;background:var(--purple);top:-120px;left:-80px;animation:float1 16s ease-in-out infinite;}
+  .a2{width:480px;height:480px;background:var(--blue);top:60px;right:-140px;animation:float2 20s ease-in-out infinite;}
+  .a3{width:420px;height:420px;background:var(--gold);bottom:-160px;left:30%;animation:float3 18s ease-in-out infinite;}
+  @keyframes float1{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(60px,40px) scale(1.1);}}
+  @keyframes float2{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(-50px,60px) scale(1.05);}}
+  @keyframes float3{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(40px,-30px) scale(1.12);}}
 
-  a { color: inherit; }
-  img { max-width: 100%; display: block; }
+  .grid-overlay{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(255,255,255,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.035) 1px,transparent 1px);background-size:44px 44px;mask-image:radial-gradient(ellipse 80% 60% at 50% 30%,black 40%,transparent 90%);animation:panGrid 24s linear infinite;}
+  @keyframes panGrid{0%{background-position:0 0,0 0;}100%{background-position:44px 44px,44px 44px;}}
 
-  .wrap {
-    max-width: 1120px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
+  .hero .inner{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);background:rgba(245,182,66,0.08);border:1px solid rgba(245,182,66,0.25);padding:6px 14px;border-radius:999px;margin-bottom:24px;}
+  .dot-live{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);}
+  .hero h1{font-size:clamp(32px,4.4vw,50px);line-height:1.12;margin-bottom:20px;}
+  .hero h1 .accent{background:linear-gradient(100deg,var(--gold),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .hero p.lead{color:var(--gray);font-size:17px;max-width:52ch;margin-bottom:10px;}
+  .hero p.lead b{color:var(--white);font-weight:600;}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px;}
 
-  .swoosh {
-    position: relative;
-    display: inline-block;
-  }
-  .swoosh::after {
-    content: "";
-    position: absolute;
-    left: -6%;
-    right: -6%;
-    top: 46%;
-    height: 38%;
-    background: linear-gradient(100deg, var(--gold) 0%, var(--ember) 100%);
-    transform: skewY(-3deg);
-    z-index: -1;
-    opacity: 0.9;
-  }
+  .phones-stage{position:relative;height:440px;perspective:1400px;}
+  .phone{position:absolute;width:210px;height:420px;border-radius:28px;background:linear-gradient(160deg,#1c1c1c,#0d0d0d);border:1px solid rgba(255,255,255,0.12);box-shadow:0 40px 80px -20px rgba(0,0,0,0.7);transition:transform .7s cubic-bezier(.2,.8,.2,1), opacity .7s ease, filter .7s ease;overflow:hidden;}
+  .phone .notch{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:64px;height:6px;border-radius:4px;background:rgba(255,255,255,0.15);}
+  .phone .screen{position:absolute;inset:8px;border-radius:22px;background:var(--bg2);padding:26px 14px 14px;overflow:hidden;}
+  .phone .app-icon{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:10px;}
+  .phone .app-name{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14px;margin-bottom:2px;}
+  .phone .app-sub{font-size:11px;color:var(--gray);margin-bottom:14px;}
+  .phone .feat-card{background:rgba(255,255,255,0.045);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:10px 12px;margin-bottom:8px;font-size:12px;font-weight:500;display:flex;align-items:center;gap:8px;}
+  .phone .feat-card .ic{width:20px;height:20px;border-radius:6px;flex-shrink:0;}
 
-  header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 26px 0;
-    position: sticky;
-    top: 0;
-    background: rgba(18,16,17,0.86);
-    backdrop-filter: blur(8px);
-    z-index: 20;
-  }
+  .p-pos-0{transform:translate(-8%,10%) rotateY(24deg) rotateX(4deg) scale(0.78);opacity:0.35;filter:blur(1.5px);z-index:1;}
+  .p-pos-1{transform:translate(46%,-2%) rotateY(-22deg) rotateX(3deg) scale(0.8);opacity:0.4;filter:blur(1.5px);z-index:1;}
+  .p-pos-active{transform:translate(18%,4%) rotateY(-8deg) rotateX(2deg) scale(1);opacity:1;filter:blur(0);z-index:2;animation:bob 5s ease-in-out infinite;}
+  @keyframes bob{0%,100%{transform:translate(18%,4%) rotateY(-8deg) rotateX(2deg) scale(1);}50%{transform:translate(18%,-2%) rotateY(-8deg) rotateX(2deg) scale(1);}}
 
-  .brand {
-    font-family: 'Anton', sans-serif;
-    font-size: 21px;
-    letter-spacing: 0.01em;
-    text-transform: uppercase;
-    text-decoration: none;
-  }
+  .stage-label{position:absolute;bottom:-6px;left:18%;transform:translateX(-8%);display:flex;gap:8px;z-index:3;}
+  .stage-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.2);transition:background .3s, width .3s;}
+  .stage-dot.on{background:var(--gold);width:20px;border-radius:4px;}
 
-  .brand em {
-    font-style: normal;
-    background: linear-gradient(100deg, var(--gold), var(--ember));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
+  section{padding:88px 0;border-top:1px solid var(--line);position:relative;}
+  .head{max-width:640px;margin-bottom:44px;}
+  .kicker{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--blue);margin-bottom:12px;}
+  .head h2{font-size:clamp(26px,3.2vw,36px);}
+  .head p{color:var(--gray);margin-top:14px;font-size:16px;}
 
-  .logo-chip {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-  }
-  .logo-chip img {
-    height: 38px;
-    width: auto;
-    object-fit: contain;
-  }
-  .logo-chip .wordmark {
-    font-family: 'Anton', sans-serif;
-    font-size: 19px;
-    letter-spacing: 0.01em;
-    text-transform: uppercase;
-    color: var(--ink);
-  }
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-bottom:16px;}
+  .card{background:rgba(255,255,255,0.035);border:1px solid var(--line);backdrop-filter:blur(10px);border-radius:20px;padding:28px;display:flex;flex-direction:column;}
+  .card .chip{width:100%;height:70px;border-radius:14px;margin-bottom:20px;position:relative;overflow:hidden;display:flex;align-items:flex-end;}
+  .card .chip span{padding:0 16px 12px;font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;opacity:0.9;}
+  .chip-beleza{background:linear-gradient(135deg,#7A2E4A 0%,#3d1729 100%);}
+  .chip-corre{background:linear-gradient(135deg,#1E5C4F 0%,#12332B 100%);}
+  .chip-recepcao{background:linear-gradient(135deg,#2A3F6E 0%,#1B2A4A 100%);}
+  .status{display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--gray);margin-bottom:10px;}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block;}
+  .dot.pilot{background:var(--gold);}
+  .card h3{font-size:22px;margin-bottom:10px;}
+  .card p.desc{color:var(--gray);font-size:14px;flex-grow:1;}
+  .card .features{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0;}
+  .feature-pill{font-size:11.5px;padding:5px 12px;border-radius:999px;border:1px solid var(--line);color:var(--gray);}
+  .card-cta{margin-top:8px;display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;padding:12px 20px;border-radius:999px;width:fit-content;}
+  .cta-solid{background:var(--white);color:#080808;}
+  .cta-solid:hover{background:var(--blue);color:#fff;}
+  .cta-outline{border:1px solid var(--line);color:var(--white);}
+  .cta-outline:hover{border-color:rgba(255,255,255,0.3);}
 
-  nav { display: flex; align-items: center; gap: 26px; }
-  nav a {
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--muted);
-  }
-  nav a:hover { color: var(--ink); }
+  .card-soon{background:radial-gradient(circle at 20% -10%,rgba(138,77,255,0.14),transparent 55%),var(--bg2);border:1px solid rgba(138,77,255,0.25);border-radius:20px;padding:30px;}
+  .card-soon .k{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--purple);margin-bottom:10px;}
+  .card-soon h3{font-size:20px;margin-bottom:16px;}
+  .soon-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+  .soon-item{font-size:12.5px;padding:12px 10px;text-align:center;border:1px solid rgba(138,77,255,0.2);border-radius:10px;color:var(--gray);}
 
-  .nav-cta {
-    padding: 9px 18px;
-    border-radius: 999px;
-    border: 1px solid var(--panel-line);
-    color: var(--ink) !important;
-    font-weight: 600 !important;
-  }
-  .nav-cta:hover { border-color: var(--gold); color: var(--gold) !important; }
+  .seg-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+  .seg-item{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:22px 16px;text-align:center;transition:transform .2s, border-color .2s;}
+  .seg-item:hover{transform:translateY(-4px);border-color:rgba(255,255,255,0.22);}
+  .seg-item .ic{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;}
+  .seg-item span{font-size:13.5px;font-weight:500;}
 
-  .hero {
-    padding: 72px 0 88px;
-    display: grid;
-    grid-template-columns: 1.05fr 0.95fr;
-    gap: 48px;
-    align-items: center;
-  }
+  .diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .glass{background:rgba(255,255,255,0.035);border:1px solid var(--line);backdrop-filter:blur(10px);border-radius:20px;padding:26px;}
+  .glass .ic{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+  .glass h4{font-size:16px;margin-bottom:8px;}
+  .glass p{font-size:13.5px;color:var(--gray);}
 
-  .eyebrow {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 22px;
-  }
+  .eco-tree{margin-top:8px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative;padding-top:44px;}
+  .eco-tree::before{content:"";position:absolute;top:0;left:12.5%;right:12.5%;height:1px;background:var(--line);}
+  .eco-node{position:relative;text-align:center;padding-top:24px;}
+  .eco-node::before{content:"";position:absolute;top:-24px;left:50%;width:1px;height:24px;background:var(--line);}
+  .eco-node .name{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;margin-bottom:10px;color:var(--blue);}
+  .eco-node ul{list-style:none;font-size:13px;color:var(--gray);}
+  .eco-node li{padding:3px 0;}
+  .eco-root{text-align:center;font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:0.06em;color:var(--gold);}
 
-  h1 {
-    font-family: 'Anton', sans-serif;
-    font-weight: 400;
-    font-size: clamp(34px, 4.6vw, 54px);
-    line-height: 1.08;
-    text-transform: uppercase;
-  }
+  .proc-row{display:flex;gap:0;margin-top:20px;flex-wrap:wrap;}
+  .proc-step{flex:1;min-width:150px;position:relative;padding:0 14px 0 0;}
+  .proc-step .n{width:30px;height:30px;border-radius:50%;background:rgba(45,156,255,0.12);border:1px solid rgba(45,156,255,0.4);color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;font-family:'JetBrains Mono',monospace;margin-bottom:12px;}
+  .proc-step h4{font-size:14.5px;margin-bottom:6px;}
+  .proc-step p{font-size:12.5px;color:var(--gray);}
+  .proc-step::after{content:"";position:absolute;top:15px;left:calc(100% - 10px);width:24px;height:1px;background:var(--line);}
+  .proc-step:last-child::after{display:none;}
 
-  .hero p.lead {
-    margin-top: 22px;
-    font-size: 17px;
-    color: var(--muted);
-    max-width: 50ch;
-  }
+  .manifesto{text-align:center;}
+  .manifesto h2{font-size:clamp(28px,4vw,40px);max-width:18ch;margin:0 auto 20px;}
+  .manifesto p{max-width:58ch;margin:0 auto;color:var(--gray);font-size:16px;}
 
-  .cta-row { margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .t-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:8px;}
+  .t-card p.quote{font-size:15px;margin-bottom:16px;}
+  .t-card .stars{color:var(--gold);font-size:13px;margin-bottom:12px;letter-spacing:2px;}
+  .t-card .who{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.05em;color:var(--gray);}
 
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 13px 22px;
-    border-radius: 999px;
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: 600;
-    border: 1px solid transparent;
-  }
-  .btn-solid {
-    background: linear-gradient(100deg, var(--gold), var(--ember));
-    color: #17120C;
-  }
-  .btn-solid:hover { filter: brightness(1.08); }
-  .btn-outline { border-color: var(--panel-line); color: var(--ink); }
-  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+  .final-cta{text-align:center;}
+  .final-cta h2{font-size:clamp(26px,3.8vw,38px);max-width:20ch;margin:0 auto 28px;}
 
-  .hero-visual {
-    position: relative;
-    height: 380px;
-  }
-  .stack-card {
-    position: absolute;
-    width: 78%;
-    border-radius: 18px;
-    padding: 18px;
-    border: 1px solid var(--panel-line);
-  }
-  .stack-1 {
-    background: linear-gradient(145deg, #241C18, #17120E);
-    top: 0; left: 0;
-    height: 190px;
-    z-index: 1;
-  }
-  .stack-2 {
-    background: linear-gradient(145deg, #7A2E4A, #3d1729);
-    top: 90px; left: 20%;
-    height: 190px;
-    z-index: 2;
-    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.6);
-  }
-  .stack-3 {
-    background: linear-gradient(145deg, #1E5C4F, #12332B);
-    top: 180px; left: 8%;
-    height: 170px;
-    z-index: 3;
-    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.6);
-  }
-  .stack-card .bar { height: 8px; border-radius: 4px; background: rgba(242,236,223,0.18); margin-bottom: 10px; }
-  .stack-card .bar.w60 { width: 60%; }
-  .stack-card .bar.w40 { width: 40%; }
-  .stack-card .dots { display: flex; gap: 6px; margin-bottom: 16px; }
-  .stack-card .dots span { width: 7px; height: 7px; border-radius: 50%; background: rgba(242,236,223,0.3); }
-  .stack-card .metric { font-family: 'JetBrains Mono', monospace; font-size: 22px; color: var(--ink); margin-top: 12px; }
-  .stack-card .metric-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(242,236,223,0.55); }
+  footer{border-top:1px solid var(--line);padding:52px 0 28px;background:#000;}
+  footer .top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:32px;margin-bottom:36px;}
+  footer .foot-lockup{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+  footer .logo-mark{height:52px;width:auto;filter:drop-shadow(0 0 14px rgba(45,156,255,0.3));}
+  footer .logo-word{height:28px;width:auto;filter:drop-shadow(0 0 10px rgba(45,156,255,0.2));}
+  footer p.desc{color:var(--gray);font-size:13.5px;max-width:32ch;}
+  footer .cols{display:flex;gap:56px;}
+  footer .col h5{font-size:13px;color:var(--white);margin-bottom:12px;}
+  footer .col a{display:block;font-size:13.5px;color:var(--gray);margin-bottom:9px;}
+  footer .col a:hover{color:var(--blue);}
+  footer .bottom{border-top:1px solid var(--line);padding-top:22px;font-size:12.5px;color:var(--gray);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+  footer .bottom a{margin-left:18px;}
+  footer .bottom a:hover{color:var(--blue);}
 
-  section.capacidades {
-    padding: 64px 0;
-    border-top: 1px solid var(--panel-line);
+  @media(max-width:960px){
+    .hero .inner{grid-template-columns:1fr;}
+    .phones-stage{height:360px;margin-top:20px;}
+    .seg-grid{grid-template-columns:repeat(3,1fr);}
+    .diff-grid{grid-template-columns:1fr 1fr;}
+    .eco-tree{grid-template-columns:1fr 1fr;gap:30px;}
+    .eco-tree::before{display:none;}
+    .eco-node::before{display:none;}
+    .t-grid{grid-template-columns:1fr;}
+    nav a:not(.btn){display:none;}
   }
-
-  .cap-head { max-width: 640px; margin-bottom: 40px; }
-  .cap-head h2 {
-    font-family: 'Anton', sans-serif;
-    font-weight: 400;
-    font-size: clamp(26px, 3.4vw, 36px);
-    text-transform: uppercase;
-    line-height: 1.15;
-  }
-  .cap-head p { margin-top: 14px; color: var(--muted); font-size: 16px; }
-
-  .cap-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
-  .cap-item {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 18px;
-    border: 1px solid var(--panel-line);
-    border-radius: 14px;
-    background: var(--bg-alt);
-  }
-  .cap-badge {
-    flex-shrink: 0;
-    width: 40px; height: 40px;
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    background: rgba(214,160,61,0.12);
-    color: var(--gold);
-    border: 1px solid rgba(214,160,61,0.25);
-  }
-  .cap-item span.label { font-size: 14px; font-weight: 500; }
-
-  section.solutions { padding: 72px 0; border-top: 1px solid var(--panel-line); }
-
-  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; margin-bottom: 22px; }
-
-  .card {
-    background: var(--panel);
-    border: 1px solid var(--panel-line);
-    border-radius: 20px;
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    min-height: 320px;
-  }
-
-  .card .chip {
-    width: 100%; height: 84px;
-    border-radius: 14px;
-    margin-bottom: 22px;
-    position: relative;
-    overflow: hidden;
-  }
-  .chip-beleza { background: linear-gradient(135deg, #7A2E4A 0%, #3d1729 100%); }
-  .chip-corre { background: linear-gradient(135deg, #1E5C4F 0%, #12332B 100%); }
-  .chip-recepcao { background: linear-gradient(135deg, #2A3F6E 0%, #1B2A4A 100%); }
-  .chip span {
-    position: absolute; left: 18px; bottom: 14px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
-    opacity: 0.85;
-  }
-
-  .status {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em;
-    color: var(--muted);
-    margin-bottom: 10px;
-  }
-  .dot { width: 6px; height: 6px; border-radius: 50%; background: #4CA868; display: inline-block; }
-  .dot.pilot { background: var(--gold); }
-
-  .card h3 {
-    font-family: 'Anton', sans-serif; font-weight: 400; font-size: 25px;
-    text-transform: uppercase; margin-bottom: 10px;
-  }
-  .card p.desc { color: var(--muted); font-size: 14.5px; flex-grow: 1; }
-
-  .card .features {
-    display: flex; flex-wrap: wrap; gap: 8px;
-    margin-top: 16px;
-  }
-  .feature-pill {
-    font-size: 12px;
-    padding: 5px 12px;
-    border-radius: 999px;
-    border: 1px solid var(--panel-line);
-    color: var(--muted);
-  }
-
-  .card-cta {
-    margin-top: 22px;
-    display: inline-flex; align-items: center; gap: 8px;
-    font-size: 14px; font-weight: 600;
-    text-decoration: none;
-    padding: 12px 20px;
-    border-radius: 999px;
-    width: fit-content;
-  }
-  .cta-solid { background: var(--ink); color: var(--bg); }
-  .cta-solid:hover { background: var(--gold); }
-  .cta-outline { border: 1px solid var(--panel-line); color: var(--ink); }
-  .cta-outline:hover { border-color: var(--gold); color: var(--gold); }
-
-  .card-soon {
-    background: radial-gradient(circle at 20% -10%, rgba(139,92,224,0.16), transparent 55%), var(--panel);
-    border: 1px solid rgba(139,92,224,0.28);
-    border-radius: 20px;
-    padding: 34px;
-  }
-  .card-soon .k {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em;
-    color: var(--violet);
-    margin-bottom: 10px;
-  }
-  .card-soon h3 {
-    font-family: 'Anton', sans-serif; font-weight: 400; font-size: 24px;
-    text-transform: uppercase; margin-bottom: 18px;
-  }
-  .soon-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-  }
-  .soon-item {
-    font-size: 13px;
-    padding: 12px 10px;
-    text-align: center;
-    border: 1px solid rgba(139,92,224,0.22);
-    border-radius: 10px;
-    color: var(--muted);
-  }
-
-  section.ecosystem { padding: 72px 0; border-top: 1px solid var(--panel-line); }
-  .eco-tree {
-    margin-top: 40px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    position: relative;
-    padding-top: 44px;
-  }
-  .eco-tree::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 12.5%; right: 12.5%;
-    height: 1px;
-    background: var(--panel-line);
-  }
-  .eco-node {
-    position: relative;
-    text-align: center;
-    padding-top: 24px;
-  }
-  .eco-node::before {
-    content: "";
-    position: absolute;
-    top: -24px; left: 50%;
-    width: 1px; height: 24px;
-    background: var(--panel-line);
-  }
-  .eco-node .name {
-    font-family: 'Anton', sans-serif;
-    font-size: 17px;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-  }
-  .eco-node ul { list-style: none; font-size: 13px; color: var(--muted); }
-  .eco-node li { padding: 3px 0; }
-  .eco-root {
-    text-align: center;
-    font-family: 'Anton', sans-serif;
-    font-size: 15px;
-    text-transform: uppercase;
-    color: var(--gold);
-    letter-spacing: 0.04em;
-  }
-
-  section.process { padding: 72px 0; border-top: 1px solid var(--panel-line); }
-  .process-row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px 16px;
-    margin-top: 40px;
-  }
-  .process-step .n {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px; color: var(--gold);
-    margin-bottom: 8px;
-  }
-  .process-step h4 {
-    font-size: 15px; font-weight: 600; margin-bottom: 6px;
-  }
-  .process-step p { font-size: 13px; color: var(--muted); }
-
-  section.why { padding: 72px 0; border-top: 1px solid var(--panel-line); }
-  .why-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-    margin-top: 36px;
-  }
-  .why-card {
-    padding: 22px;
-    border: 1px solid var(--panel-line);
-    border-radius: 16px;
-  }
-  .why-card h4 { font-size: 15.5px; font-weight: 600; margin-bottom: 8px; }
-  .why-card p { font-size: 13.5px; color: var(--muted); }
-
-  section.manifesto {
-    padding: 88px 0;
-    border-top: 1px solid var(--panel-line);
-    text-align: center;
-  }
-  .manifesto h2 {
-    font-family: 'Anton', sans-serif;
-    font-weight: 400;
-    font-size: clamp(28px, 4vw, 40px);
-    text-transform: uppercase;
-    max-width: 18ch;
-    margin: 0 auto 20px;
-  }
-  .manifesto p {
-    max-width: 58ch;
-    margin: 0 auto;
-    color: var(--muted);
-    font-size: 16px;
-  }
-
-  section.testimonials { padding: 72px 0; border-top: 1px solid var(--panel-line); }
-  .t-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 36px; }
-  .t-card {
-    padding: 26px;
-    border: 1px solid var(--panel-line);
-    border-radius: 16px;
-    background: var(--bg-alt);
-  }
-  .t-card .stars { color: var(--gold); font-size: 14px; margin-bottom: 14px; letter-spacing: 2px; }
-  .t-card p.quote { font-size: 15.5px; margin-bottom: 16px; }
-  .t-card .who { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
-
-  section.final-cta {
-    padding: 80px 0 96px;
-    border-top: 1px solid var(--panel-line);
-    text-align: center;
-  }
-  .final-cta h2 {
-    font-family: 'Anton', sans-serif; font-weight: 400;
-    font-size: clamp(26px, 3.8vw, 38px);
-    text-transform: uppercase;
-    max-width: 20ch;
-    margin: 0 auto 28px;
-  }
-
-  footer {
-    border-top: 1px solid var(--panel-line);
-    padding: 28px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 13px;
-    color: var(--muted);
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-  footer a { color: var(--muted); text-decoration: none; margin-left: 18px; }
-  footer a:hover { color: var(--gold); }
-
-  @media (max-width: 860px) {
-    .hero { grid-template-columns: 1fr; padding: 44px 0 56px; }
-    .hero-visual { order: -1; height: 300px; }
-    .cap-grid { grid-template-columns: 1fr 1fr; }
-    .cards { grid-template-columns: 1fr; }
-    .soon-grid { grid-template-columns: repeat(2, 1fr); }
-    .eco-tree { grid-template-columns: 1fr; gap: 30px; }
-    .eco-tree::before { display: none; }
-    .eco-node::before { display: none; }
-    .process-row { grid-template-columns: 1fr 1fr; }
-    .why-grid { grid-template-columns: 1fr; }
-    .t-grid { grid-template-columns: 1fr; }
-    nav a:not(.nav-cta) { display: none; }
-    footer { flex-direction: column; text-align: center; }
-    footer a { margin: 0 8px; }
-  }
-
-  @media (max-width: 480px) {
-    .cap-grid { grid-template-columns: 1fr; }
-    .process-row { grid-template-columns: 1fr; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
+  @media(max-width:600px){
+    .seg-grid{grid-template-columns:1fr 1fr;}
+    .diff-grid{grid-template-columns:1fr;}
+    .soon-grid{grid-template-columns:1fr 1fr;}
   }
 </style>
 </head>
 <body>
 
-  <div class="wrap">
-    <header>
-      <a class="logo-chip" href="#top">
-        <img src="assets/logo-smash-v2-cropped.png" alt="Smash Mídias">
-      </a>
-      <nav>
-        <a href="#produtos">Produtos</a>
-        <a href="#ecossistema">Ecossistema</a>
-        <a href="#como-trabalhamos">Como trabalhamos</a>
-        <a class="nav-cta" href="#contato">Solicitar orçamento</a>
-      </nav>
-    </header>
+<header>
+  <div class="wrap inner">
+    <a href="#top" class="logo-lockup">
+      <img class="logo-mark" src="assets/logo-mark.png" alt="">
+      <img class="logo-word" src="assets/logo-wordmark.png" alt="Smash Mídias">
+    </a>
+    <nav>
+      <a href="#produtos">Produtos</a>
+      <a href="#ecossistema">Ecossistema</a>
+      <a href="#como-trabalhamos">Como trabalhamos</a>
+      <a class="btn btn-gold" href="https://wa.me/5511993047126" target="_blank" rel="noopener">Solicitar orçamento</a>
+    </nav>
   </div>
+</header>
 
-  <div class="wrap" id="top">
-    <section class="hero">
+<section class="hero" id="top">
+  <div class="aurora"><div class="a1"></div><div class="a2"></div><div class="a3"></div></div>
+  <div class="grid-overlay"></div>
+  <div class="wrap inner">
+    <div>
+      <div class="eyebrow"><span class="dot-live"></span> Da agência de crescimento à tecnologia própria</div>
+      <h1>Criamos aplicativos que transformam empresas em <span class="accent">negócios digitais.</span></h1>
+      <p class="lead"><b>Da ideia ao lançamento.</b> A Smash Mídias já ajuda negócios a crescerem nas redes sociais. Agora construímos a tecnologia por trás deles: plataformas de nicho que automatizam a rotina, organizam a operação e fazem cada negócio parecer maior do que é.</p>
+      <div class="cta-row">
+        <a class="btn btn-gold" href="https://wa.me/5511993047126" target="_blank" rel="noopener">Solicitar orçamento</a>
+        <a class="btn btn-ghost" href="#produtos">Ver nossos projetos</a>
+      </div>
+    </div>
+    <div class="phones-stage" id="phonesStage"></div>
+  </div>
+</section>
+
+<section id="produtos">
+  <div class="wrap">
+    <div class="head">
+      <div class="kicker">Nossos produtos</div>
+      <h2>Um nicho por vez.</h2>
+      <p>Cada plataforma nasce da rotina real de quem vai usar — não é template genérico com o nome trocado.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="chip chip-beleza"><span>Salões e barbearias</span></div>
+        <div class="status"><span class="dot"></span> No ar</div>
+        <h3>Beleza em sua Mão</h3>
+        <p class="desc">Agenda, pagamento e WhatsApp automatizados para salões de beleza e barbearias. O cliente marca, remarca e cancela sozinho — o dono só acompanha.</p>
+        <div class="features">
+          <span class="feature-pill">Agenda inteligente</span>
+          <span class="feature-pill">Vale-presente</span>
+          <span class="feature-pill">Assinatura recorrente</span>
+          <span class="feature-pill">WhatsApp automático</span>
+        </div>
+        <a class="card-cta cta-solid" href="https://belezaemsuamao.com.br" target="_blank" rel="noopener">Conhecer plataforma →</a>
+      </div>
+
+      <div class="card">
+        <div class="chip chip-corre"><span>Equipes de corrida</span></div>
+        <div class="status"><span class="dot pilot"></span> Rodando com equipe piloto</div>
+        <h3>Corre Mais</h3>
+        <p class="desc">Gestão de treinos, provas e comunicação para equipes de corrida — pensado pra quem organiza o grupo, não pra corredor solo. Hoje em uso real por uma equipe piloto, sendo preparado para atender qualquer equipe.</p>
+        <div class="features">
+          <span class="feature-pill">Calendário de treinos</span>
+          <span class="feature-pill">Provas e ranking</span>
+          <span class="feature-pill">Comunidade</span>
+        </div>
+        <a class="card-cta cta-outline" href="#contato">Quero ser avisado →</a>
+      </div>
+
+      <div class="card">
+        <div class="chip chip-recepcao"><span>Terapeutas e profissionais de atendimento</span></div>
+        <div class="status"><span class="dot"></span> No ar</div>
+        <h3>Recepção Inteligente</h3>
+        <p class="desc">Site + secretária virtual + agendamento real pra terapeutas, fisioterapeutas, nutricionistas e outros profissionais de atendimento. Pré-atendimento automatizado que qualifica o paciente antes da consulta, agenda direto no Google Calendar e leva pro WhatsApp com o contexto já pronto.</p>
+        <div class="features">
+          <span class="feature-pill">Secretária virtual</span>
+          <span class="feature-pill">Agendamento automático</span>
+          <span class="feature-pill">Integração WhatsApp</span>
+          <span class="feature-pill">Compliance LGPD</span>
+        </div>
+        <a class="card-cta cta-solid" href="https://smash-recepcao-inteligente.vercel.app" target="_blank" rel="noopener">Ver demonstração →</a>
+      </div>
+    </div>
+
+    <div class="card-soon">
+      <div class="k">Próximos aplicativos</div>
+      <h3>Em breve...</h3>
+      <div class="soon-grid">
+        <div class="soon-item">Beach Tennis</div>
+        <div class="soon-item">Academias</div>
+        <div class="soon-item">Restaurantes</div>
+        <div class="soon-item">Imobiliárias</div>
+        <div class="soon-item">Condomínios</div>
+        <div class="soon-item">CRM Comercial</div>
+        <div class="soon-item">Pet Shops</div>
+        <div class="soon-item">E muito mais...</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ecossistema">
+  <div class="wrap">
+    <div class="head">
+      <div class="kicker">O ecossistema Smash</div>
+      <h2>Não é um aplicativo isolado.</h2>
+      <p>É uma plataforma em expansão constante, um nicho de cada vez.</p>
+    </div>
+    <div class="eco-root">Smash Mídias</div>
+    <div class="eco-tree">
+      <div class="eco-node">
+        <div class="name">Beleza em sua Mão</div>
+        <ul><li>Salões de beleza</li><li>Barbearias</li><li>Estética</li><li>Agendamentos</li></ul>
+      </div>
+      <div class="eco-node">
+        <div class="name">Corre Mais</div>
+        <ul><li>Equipes de corrida</li><li>Treinos e provas</li><li>Ranking</li><li>Comunidade</li></ul>
+      </div>
+      <div class="eco-node">
+        <div class="name">Recepção Inteligente</div>
+        <ul><li>Terapeutas</li><li>Fisioterapeutas</li><li>Nutricionistas</li><li>Consultórios</li></ul>
+      </div>
+      <div class="eco-node">
+        <div class="name">Próximos apps</div>
+        <ul><li>Beach Tennis</li><li>Academias</li><li>Restaurantes</li><li>Imobiliárias</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head">
+      <div class="kicker">O que desenvolvemos</div>
+      <h2>Tecnologia sob medida pra qualquer segmento.</h2>
+      <p>Aplicativos Android e iPhone, sistemas web, banco de dados em nuvem, inteligência artificial e dashboards — construídos pela nossa própria equipe.</p>
+    </div>
+    <div class="seg-grid" id="segGrid"></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head">
+      <div class="kicker">Por que a Smash Mídias</div>
+      <h2>Diferenciais.</h2>
+    </div>
+    <div class="diff-grid" id="diffGrid"></div>
+  </div>
+</section>
+
+<section id="como-trabalhamos">
+  <div class="wrap">
+    <div class="head">
+      <div class="kicker">Como trabalhamos</div>
+      <h2>O mesmo processo, do primeiro rascunho ao produto rodando de verdade.</h2>
+    </div>
+    <div class="proc-row" id="procRow"></div>
+  </div>
+</section>
+
+<section class="manifesto">
+  <div class="wrap">
+    <h2>O futuro já começou.</h2>
+    <p>Enquanto muitos negócios ainda são administrados em planilha e papel, nossos clientes usam aplicativos próprios pra automatizar processos e ganhar tempo de volta. Acreditamos que todo negócio — pequeno, médio ou de nicho — merece ter sua própria tecnologia.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head">
+      <div class="kicker">Quem já usa</div>
+      <h2>Depoimentos reais.</h2>
+    </div>
+    <div class="t-grid">
+      <div class="glass t-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"A gestão da minha barbearia mudou completamente. Cliente marca sozinho, eu só acompanho."</p>
+        <div class="who">Dono de barbearia — cliente piloto, Beleza em sua Mão</div>
+      </div>
+      <div class="glass t-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"O Corre Mais organizou o treino da equipe inteira. Antes era tudo espalhado em grupo de WhatsApp."</p>
+        <div class="who">Atleta — equipe piloto, Corre Mais</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta" id="contato">
+  <div class="wrap">
+    <h2>Vamos construir o próximo aplicativo juntos?</h2>
+    <a class="btn btn-gold" href="https://wa.me/5511993047126" target="_blank" rel="noopener">Solicitar orçamento</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
       <div>
-        <div class="eyebrow">Da agência de crescimento à tecnologia própria</div>
-        <h1><span class="swoosh">Transformamos ideias</span><br>em aplicativos que<br>impulsionam negócios.</h1>
-        <p class="lead">A Smash Mídias já ajuda negócios a crescerem nas redes sociais. Agora, construímos a tecnologia por trás deles: plataformas de nicho que automatizam a rotina, organizam a operação e fazem cada negócio parecer maior do que é.</p>
-        <div class="cta-row">
-          <a class="btn btn-solid" href="#produtos">Conheça nossos aplicativos</a>
-          <a class="btn btn-outline" href="#contato">Solicitar um orçamento</a>
+        <div class="foot-lockup">
+          <img class="logo-mark" src="assets/logo-mark.png" alt="">
+          <img class="logo-word" src="assets/logo-wordmark.png" alt="Smash Mídias">
+        </div>
+        <p class="desc">Tecnologia sob medida pro seu nicho. Da agência de crescimento à tecnologia própria.</p>
+      </div>
+      <div class="cols">
+        <div class="col">
+          <h5>Produtos</h5>
+          <a href="https://belezaemsuamao.com.br" target="_blank" rel="noopener">Beleza em sua Mão</a>
+          <a href="#contato">Corre Mais</a>
+          <a href="https://smash-recepcao-inteligente.vercel.app" target="_blank" rel="noopener">Recepção Inteligente</a>
+        </div>
+        <div class="col">
+          <h5>Contato</h5>
+          <a href="https://wa.me/5511993047126" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="https://www.instagram.com/smashmidias" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.facebook.com/smashmidias" target="_blank" rel="noopener">Facebook</a>
         </div>
       </div>
-      <div class="hero-visual">
-        <div class="stack-card stack-1">
-          <div class="dots"><span></span><span></span><span></span></div>
-          <div class="bar w60"></div>
-          <div class="bar w40"></div>
-          <div class="metric-label">Agendamentos hoje</div>
-          <div class="metric">24</div>
-        </div>
-        <div class="stack-card stack-2">
-          <div class="dots"><span></span><span></span><span></span></div>
-          <div class="bar w60"></div>
-          <div class="bar w40"></div>
-          <div class="metric-label">Faturamento do mês</div>
-          <div class="metric">+18%</div>
-        </div>
-        <div class="stack-card stack-3">
-          <div class="dots"><span></span><span></span><span></span></div>
-          <div class="bar w60"></div>
-          <div class="bar w40"></div>
-          <div class="metric-label">Treinos da semana</div>
-          <div class="metric">12</div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <div class="wrap">
-    <section class="capacidades">
-      <div class="cap-head">
-        <h2>Sua ideia pode ser o próximo grande aplicativo.</h2>
-        <p>Você não precisa só de um aplicativo. Precisa de algo que economize tempo, organize o negócio e ajude a faturar mais. Nós cuidamos do desenvolvimento inteiro enquanto você foca em crescer.</p>
-      </div>
-      <div class="cap-grid">
-        <div class="cap-item"><div class="cap-badge">AND</div><span class="label">Aplicativos Android</span></div>
-        <div class="cap-item"><div class="cap-badge">iOS</div><span class="label">Aplicativos iPhone</span></div>
-        <div class="cap-item"><div class="cap-badge">WEB</div><span class="label">Sistemas web</span></div>
-        <div class="cap-item"><div class="cap-badge">DB</div><span class="label">Banco de dados em nuvem</span></div>
-        <div class="cap-item"><div class="cap-badge">IA</div><span class="label">Inteligência artificial</span></div>
-        <div class="cap-item"><div class="cap-badge">BI</div><span class="label">Dashboards inteligentes</span></div>
-      </div>
-    </section>
-  </div>
-
-  <div class="wrap">
-    <section class="solutions" id="produtos">
-      <div class="cap-head">
-        <h2>Nossos produtos</h2>
-        <p>Um nicho por vez. Cada plataforma nasce da rotina real de quem vai usar — não é template genérico com o nome trocado.</p>
-      </div>
-
-      <div class="cards">
-        <div class="card">
-          <div class="chip chip-beleza"><span>Salões &amp; barbearias</span></div>
-          <div class="status"><span class="dot"></span> No ar</div>
-          <h3>Beleza em sua Mão</h3>
-          <p class="desc">Agenda, pagamento e WhatsApp automatizados para salões de beleza e barbearias. O cliente marca, remarca e cancela sozinho — o dono só acompanha.</p>
-          <div class="features">
-            <span class="feature-pill">Agenda inteligente</span>
-            <span class="feature-pill">Vale-presente</span>
-            <span class="feature-pill">Assinatura recorrente</span>
-            <span class="feature-pill">WhatsApp automático</span>
-          </div>
-          <a class="card-cta cta-solid" href="https://belezaemsuamao.com.br" target="_blank" rel="noopener">Conhecer plataforma →</a>
-        </div>
-
-        <div class="card">
-          <div class="chip chip-corre"><span>Equipes de corrida</span></div>
-          <div class="status"><span class="dot pilot"></span> Rodando com equipe piloto</div>
-          <h3>Corre Mais</h3>
-          <p class="desc">Gestão de treinos, provas e comunicação para equipes de corrida — pensado pra quem organiza o grupo, não pra corredor solo. Hoje em uso real por uma equipe piloto, sendo preparado para atender qualquer equipe.</p>
-          <div class="features">
-            <span class="feature-pill">Calendário de treinos</span>
-            <span class="feature-pill">Provas &amp; ranking</span>
-            <span class="feature-pill">Comunidade</span>
-          </div>
-          <a class="card-cta cta-outline" href="#contato">Quero ser avisado →</a>
-        </div>
-
-        <div class="card">
-          <div class="chip chip-recepcao"><span>Terapeutas &amp; profissionais de atendimento</span></div>
-          <div class="status"><span class="dot"></span> No ar</div>
-          <h3>Recepção Inteligente</h3>
-          <p class="desc">Site + secretária virtual + agendamento real pra terapeutas, fisioterapeutas, nutricionistas e outros profissionais de atendimento. Pré-atendimento automatizado que qualifica o paciente antes da consulta, agenda direto no Google Calendar e leva pro WhatsApp com o contexto já pronto.</p>
-          <div class="features">
-            <span class="feature-pill">Secretária virtual</span>
-            <span class="feature-pill">Agendamento automático</span>
-            <span class="feature-pill">Integração WhatsApp</span>
-            <span class="feature-pill">Compliance LGPD</span>
-          </div>
-          <a class="card-cta cta-solid" href="https://smash-recepcao-inteligente.vercel.app" target="_blank" rel="noopener">Ver demonstração →</a>
-        </div>
-      </div>
-
-      <div class="card-soon">
-        <div class="k">Próximos aplicativos</div>
-        <h3>Em breve...</h3>
-        <div class="soon-grid">
-          <div class="soon-item">Beach Tennis</div>
-          <div class="soon-item">Academias</div>
-          <div class="soon-item">Restaurantes</div>
-          <div class="soon-item">Imobiliárias</div>
-          <div class="soon-item">Condomínios</div>
-          <div class="soon-item">CRM Comercial</div>
-          <div class="soon-item">Pet Shops</div>
-          <div class="soon-item">E muito mais...</div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <div class="wrap">
-    <section class="ecosystem" id="ecossistema">
-      <div class="cap-head">
-        <h2>O ecossistema Smash</h2>
-        <p>Não é um aplicativo isolado. É uma plataforma em expansão constante, um nicho de cada vez.</p>
-      </div>
-      <div class="eco-root">Smash Mídias</div>
-      <div class="eco-tree">
-        <div class="eco-node">
-          <div class="name">Beleza em sua Mão</div>
-          <ul>
-            <li>Salões de beleza</li>
-            <li>Barbearias</li>
-            <li>Estética</li>
-            <li>Agendamentos</li>
-          </ul>
-        </div>
-        <div class="eco-node">
-          <div class="name">Corre Mais</div>
-          <ul>
-            <li>Equipes de corrida</li>
-            <li>Treinos &amp; provas</li>
-            <li>Ranking</li>
-            <li>Comunidade</li>
-          </ul>
-        </div>
-        <div class="eco-node">
-          <div class="name">Recepção Inteligente</div>
-          <ul>
-            <li>Terapeutas</li>
-            <li>Fisioterapeutas</li>
-            <li>Nutricionistas</li>
-            <li>Consultórios</li>
-          </ul>
-        </div>
-        <div class="eco-node">
-          <div class="name">Próximos apps</div>
-          <ul>
-            <li>Beach Tennis</li>
-            <li>Academias</li>
-            <li>Restaurantes</li>
-            <li>Imobiliárias</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <div class="wrap">
-    <section class="process" id="como-trabalhamos">
-      <div class="cap-head">
-        <h2>Como trabalhamos</h2>
-        <p>O mesmo processo, do primeiro rascunho ao produto rodando de verdade.</p>
-      </div>
-      <div class="process-row">
-        <div class="process-step"><div class="n">01</div><h4>Ideia</h4><p>Entendemos a rotina real do negócio antes de desenhar qualquer tela.</p></div>
-        <div class="process-step"><div class="n">02</div><h4>Planejamento</h4><p>Definimos o que entra na primeira versão — e o que espera.</p></div>
-        <div class="process-step"><div class="n">03</div><h4>Design</h4><p>Cada produto ganha a cara do seu próprio nicho, não um template genérico.</p></div>
-        <div class="process-step"><div class="n">04</div><h4>Desenvolvimento</h4><p>Construção real, com a nossa própria equipe — sem revenda de sistema pronto.</p></div>
-        <div class="process-step"><div class="n">05</div><h4>Testes</h4><p>Validamos com um cliente piloto real antes de abrir pra todo mundo.</p></div>
-        <div class="process-step"><div class="n">06</div><h4>Lançamento</h4><p>O produto vai ao ar com quem já testou no dia a dia.</p></div>
-        <div class="process-step"><div class="n">07</div><h4>Evolução</h4><p>Continuamos ajustando com base no uso real, não em suposição.</p></div>
-      </div>
-    </section>
-  </div>
-
-  <div class="wrap">
-    <section class="why">
-      <div class="cap-head">
-        <h2>Por que a Smash Mídias</h2>
-      </div>
-      <div class="why-grid">
-        <div class="why-card"><h4>Desenvolvimento rápido</h4><p>Da ideia ao produto testável em semanas, não em meses.</p></div>
-        <div class="why-card"><h4>Segurança</h4><p>Dados e credenciais tratados com o mesmo cuidado que exigiríamos pra nossos próprios negócios.</p></div>
-        <div class="why-card"><h4>Tecnologia em nuvem</h4><p>Sem servidor pra você administrar, sem instalação complicada.</p></div>
-        <div class="why-card"><h4>Apps modernos</h4><p>Feitos pra rodar bem no bolso do seu cliente, não só no computador.</p></div>
-        <div class="why-card"><h4>Suporte humanizado</h4><p>Você fala com quem construiu o sistema, não com um robô de central de atendimento.</p></div>
-        <div class="why-card"><h4>Evolução constante</h4><p>O produto que você contrata hoje continua sendo melhorado depois.</p></div>
-      </div>
-    </section>
-  </div>
-
-  <div class="wrap">
-    <section class="manifesto">
-      <h2>O futuro já começou.</h2>
-      <p>Enquanto muitos negócios ainda são administrados em planilha e papel, nossos clientes usam aplicativos próprios pra automatizar processos e ganhar tempo de volta. Acreditamos que todo negócio — pequeno, médio ou de nicho — merece ter sua própria tecnologia.</p>
-    </section>
-  </div>
-
-  <div class="wrap">
-    <section class="testimonials">
-      <div class="cap-head">
-        <h2>Quem já usa</h2>
-      </div>
-      <div class="t-grid">
-        <div class="t-card">
-          <div class="stars">★★★★★</div>
-          <p class="quote">"A gestão da minha barbearia mudou completamente. Cliente marca sozinho, eu só acompanho."</p>
-          <div class="who">Dono de barbearia — cliente piloto, Beleza em sua Mão</div>
-        </div>
-        <div class="t-card">
-          <div class="stars">★★★★★</div>
-          <p class="quote">"O Corre Mais organizou o treino da equipe inteira. Antes era tudo espalhado em grupo de WhatsApp."</p>
-          <div class="who">Atleta — equipe piloto, Corre Mais</div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <div class="wrap">
-    <section class="final-cta" id="contato">
-      <h2>Vamos construir o próximo aplicativo juntos?</h2>
-      <a class="btn btn-solid" href="https://wa.me/5511993047126" target="_blank" rel="noopener">Solicitar orçamento</a>
-    </section>
-  </div>
-
-  <div class="wrap">
-    <footer>
+    </div>
+    <div class="bottom">
       <span>© 2026 Smash Mídias — São Bernardo do Campo, SP</span>
       <span>
         <a href="https://wa.me/5511993047126" target="_blank" rel="noopener">WhatsApp</a>
         <a href="https://www.instagram.com/smashmidias" target="_blank" rel="noopener">Instagram</a>
         <a href="https://www.facebook.com/smashmidias" target="_blank" rel="noopener">Facebook</a>
       </span>
-    </footer>
+    </div>
   </div>
+</footer>
 
+<script>
+const ICONS = {
+  calendar:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>',
+  cash:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="3"/></svg>',
+  trophy:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4zM7 5H3v2a4 4 0 0 0 4 4M17 5h4v2a4 4 0 0 1-4 4"/></svg>',
+  chat:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
+  file:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>',
+  phone:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg>',
+  refresh:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>',
+  building:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="4" y="2" width="16" height="20" rx="1"/><path d="M9 22v-4h6v4M9 6h.01M15 6h.01M9 10h.01M15 10h.01M9 14h.01M15 14h.01"/></svg>',
+  heart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>',
+  book:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>',
+  waves:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M2 6c1.5-1.5 3-1.5 4.5 0s3 1.5 4.5 0 3-1.5 4.5 0 3 1.5 4.5 0M2 12c1.5-1.5 3-1.5 4.5 0s3 1.5 4.5 0 3-1.5 4.5 0 3 1.5 4.5 0M2 18c1.5-1.5 3-1.5 4.5 0s3 1.5 4.5 0 3-1.5 4.5 0 3 1.5 4.5 0"/></svg>',
+  burger:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M3 9h18M3 15h18M5 9a7 4 0 0 1 14 0M4 15h16l-1.5 4a2 2 0 0 1-2 1.5h-9a2 2 0 0 1-2-1.5z"/></svg>',
+  store:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M3 9l1.5-5h15L21 9M3 9v11h18V9M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"/></svg>',
+  route:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8.5 19H15a4 4 0 0 0 4-4v-1a4 4 0 0 0-4-4H9a4 4 0 0 1-4-4V5"/></svg>',
+  wallet:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><circle cx="17" cy="14" r="1"/></svg>',
+  home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M3 12l9-9 9 9"/><path d="M5 10v10h14V10"/></svg>',
+  car:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M5 17h14M5 17a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM19 17a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM3 17V11l2-5h14l2 5v6"/></svg>',
+  bolt:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg>',
+  lock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>',
+  cloud:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>',
+  spark:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg>',
+  users:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>'
+};
+
+const COLORVARS = { gold:'var(--gold)', blue:'var(--blue)', purple:'var(--purple)', green:'var(--green)' };
+function bgFor(color){ return color==='gold' ? 'rgba(245,182,66,0.14)' : color==='blue' ? 'rgba(45,156,255,0.14)' : color==='purple' ? 'rgba(138,77,255,0.14)' : 'rgba(0,214,143,0.14)'; }
+function iconChip(name, color, size){
+  return `<div class="ic" style="background:${bgFor(color)};color:${COLORVARS[color]};width:${size}px;height:${size}px">${ICONS[name]||''}</div>`;
+}
+
+const SEGMENTS = [
+  { name:'Beleza em sua Mão', sub:'Salões e barbearias', color:'purple', features:[
+    {icon:'calendar', label:'Agenda inteligente'}, {icon:'cash', label:'Vale-presente'}, {icon:'refresh', label:'Assinatura recorrente'}, {icon:'chat', label:'WhatsApp automático'}
+  ]},
+  { name:'Corre Mais', sub:'Equipes de corrida', color:'green', features:[
+    {icon:'calendar', label:'Calendário de treinos'}, {icon:'trophy', label:'Provas e ranking'}, {icon:'chat', label:'Comunidade'}
+  ]},
+  { name:'Recepção Inteligente', sub:'Terapeutas e clínicas', color:'blue', features:[
+    {icon:'chat', label:'Secretária virtual'}, {icon:'calendar', label:'Agendamento automático'}, {icon:'phone', label:'Integração WhatsApp'}, {icon:'file', label:'Compliance LGPD'}
+  ]}
+];
+
+function buildPhone(seg, posClass){
+  const c = COLORVARS[seg.color];
+  const bg = bgFor(seg.color);
+  const feats = seg.features.map(f => `<div class="feat-card"><span class="ic" style="background:${bg};color:${c};display:flex;align-items:center;justify-content:center;">${ICONS[f.icon]}</span>${f.label}</div>`).join('');
+  return `<div class="phone ${posClass}"><div class="notch"></div><div class="screen">
+    <div class="app-icon" style="background:${bg};color:${c};display:flex;align-items:center;justify-content:center;">${ICONS.phone}</div>
+    <div class="app-name">${seg.name}</div>
+    <div class="app-sub">${seg.sub}</div>
+    ${feats}
+  </div></div>`;
+}
+
+let active = 0;
+function renderPhones(){
+  const stage = document.getElementById('phonesStage');
+  const n = SEGMENTS.length;
+  const order = [ (active+n-1)%n, (active+1)%n, active ];
+  const classes = ['p-pos-0','p-pos-1','p-pos-active'];
+  stage.innerHTML = order.map((idx,i)=>buildPhone(SEGMENTS[idx], classes[i])).join('') +
+    `<div class="stage-label">${SEGMENTS.map((s,i)=>`<span class="stage-dot ${i===active?'on':''}"></span>`).join('')}</div>`;
+}
+renderPhones();
+setInterval(()=>{ active = (active+1)%SEGMENTS.length; renderPhones(); }, 3200);
+
+const SEG_GRID = [
+  {icon:'building', label:'Empresas', color:'blue'},
+  {icon:'heart', label:'Clínicas', color:'purple'},
+  {icon:'book', label:'Escolas', color:'gold'},
+  {icon:'waves', label:'Arenas esportivas', color:'green'},
+  {icon:'burger', label:'Delivery', color:'gold'},
+  {icon:'store', label:'Marketplace', color:'purple'},
+  {icon:'route', label:'Logística', color:'blue'},
+  {icon:'wallet', label:'Financeiro', color:'green'},
+  {icon:'home', label:'Imobiliárias', color:'gold'},
+  {icon:'car', label:'Concessionárias', color:'blue'}
+];
+document.getElementById('segGrid').innerHTML = SEG_GRID.map(s=>`
+  <div class="seg-item">${iconChip(s.icon, s.color, 44)}<span>${s.label}</span></div>
+`).join('');
+
+const DIFF_GRID = [
+  {icon:'bolt', color:'gold', title:'Desenvolvimento rápido', desc:'Da ideia ao produto testável em semanas, não em meses.'},
+  {icon:'lock', color:'blue', title:'Segurança', desc:'Dados e credenciais tratados com o mesmo cuidado que exigiríamos pra nossos próprios negócios.'},
+  {icon:'phone', color:'purple', title:'Android e iPhone', desc:'Apps modernos, feitos pra rodar bem no bolso do seu cliente, não só no computador.'},
+  {icon:'cloud', color:'green', title:'Tecnologia em nuvem', desc:'Sem servidor pra você administrar, sem instalação complicada.'},
+  {icon:'users', color:'gold', title:'Suporte humanizado', desc:'Você fala com quem construiu o sistema, não com um robô de central de atendimento.'},
+  {icon:'refresh', color:'blue', title:'Evolução constante', desc:'O produto que você contrata hoje continua sendo melhorado depois.'}
+];
+document.getElementById('diffGrid').innerHTML = DIFF_GRID.map(d=>`
+  <div class="glass">${iconChip(d.icon, d.color, 42)}<h4>${d.title}</h4><p>${d.desc}</p></div>
+`).join('');
+
+const STEPS = [
+  {n:'01', t:'Ideia', d:'Entendemos a rotina real do negócio antes de desenhar qualquer tela.'},
+  {n:'02', t:'Planejamento', d:'Definimos o que entra na primeira versão — e o que espera.'},
+  {n:'03', t:'Design', d:'Cada produto ganha a cara do próprio nicho, não um template genérico.'},
+  {n:'04', t:'Desenvolvimento', d:'Construção real, com a nossa própria equipe — sem revenda de sistema pronto.'},
+  {n:'05', t:'Testes', d:'Validamos com um cliente piloto real antes de abrir pra todo mundo.'},
+  {n:'06', t:'Lançamento', d:'O produto vai ao ar com quem já testou no dia a dia.'},
+  {n:'07', t:'Evolução', d:'Continuamos ajustando com base no uso real, não em suposição.'}
+];
+document.getElementById('procRow').innerHTML = STEPS.map(s=>`
+  <div class="proc-step"><div class="n">${s.n}</div><h4>${s.t}</h4><p>${s.d}</p></div>
+`).join('');
+</script>
 </body>
 </html>
