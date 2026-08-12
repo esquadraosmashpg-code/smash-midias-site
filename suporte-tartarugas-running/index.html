@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T@RTARUGAS RUNNING — Suporte | Smash Mídias</title>
+<meta name="description" content="Página oficial de suporte do aplicativo T@RTARUGAS RUNNING, desenvolvido e mantido pela Smash Mídias. Contato, privacidade e exclusão de conta.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#080808; --bg2:#121212; --bg3:#161616;
+    --gold:#F5B642; --blue:#2D9CFF; --purple:#8A4DFF; --green:#00D68F;
+    --white:#FFFFFF; --gray:#B5B5B5; --line:rgba(255,255,255,0.09);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--white);font-family:'Inter',sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
+  h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;font-weight:600;letter-spacing:-0.01em;}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(8,8,8,0.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
+  header .inner{display:flex;align-items:center;justify-content:space-between;padding:8px 0;}
+  .logo-lockup{display:flex;align-items:center;gap:14px;}
+  .logo-mark{height:92px;width:auto;filter:drop-shadow(0 0 16px rgba(45,156,255,0.4));}
+  .logo-word{height:50px;width:auto;filter:drop-shadow(0 0 10px rgba(45,156,255,0.25));}
+  nav{display:flex;align-items:center;gap:28px;}
+  nav a{font-size:14px;font-weight:500;color:var(--gray);transition:color .2s;}
+  nav a:hover{color:var(--white);}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;font-size:14px;font-weight:600;border:1px solid transparent;white-space:nowrap;cursor:pointer;transition:transform .15s, filter .15s;}
+  .btn:hover{transform:translateY(-1px);}
+  .btn-green{background:linear-gradient(100deg,var(--green),#00966b);color:#04140f;box-shadow:0 8px 24px -8px rgba(0,214,143,0.55);}
+  .btn-green:hover{filter:brightness(1.1);}
+  .btn-gold{background:linear-gradient(100deg,var(--gold),#c98a1c);color:#1a1206;box-shadow:0 8px 24px -8px rgba(245,182,66,0.5);}
+  .btn-gold:hover{filter:brightness(1.1);}
+  .btn-ghost{border-color:var(--line);color:var(--white);background:rgba(255,255,255,0.03);}
+  .btn-ghost:hover{border-color:rgba(255,255,255,0.3);}
+
+  .hero{position:relative;padding:72px 0 64px;overflow:hidden;border-bottom:1px solid var(--line);}
+  .aurora{position:absolute;inset:-20% -10%;z-index:0;filter:blur(60px);opacity:0.5;pointer-events:none;}
+  .aurora div{position:absolute;border-radius:50%;}
+  .a1{width:480px;height:480px;background:var(--green);top:-140px;left:-60px;animation:float1 16s ease-in-out infinite;}
+  .a2{width:380px;height:380px;background:var(--blue);bottom:-160px;right:-100px;animation:float2 20s ease-in-out infinite;}
+  @keyframes float1{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(50px,40px) scale(1.1);}}
+  @keyframes float2{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(-40px,-30px) scale(1.08);}}
+
+  .hero .wrap{position:relative;z-index:1;max-width:760px;}
+  .back-link{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;color:var(--gray);margin-bottom:28px;}
+  .back-link:hover{color:var(--white);}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--green);background:rgba(0,214,143,0.08);border:1px solid rgba(0,214,143,0.25);padding:6px 14px;border-radius:999px;margin-bottom:24px;}
+  .dot-live{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);}
+  .hero h1{font-size:clamp(28px,4.2vw,42px);line-height:1.14;margin-bottom:18px;}
+  .hero p.sub{color:var(--gray);font-size:17px;max-width:60ch;margin-bottom:6px;}
+  .hero p.lead{color:var(--gray);font-size:15.5px;max-width:64ch;margin-top:18px;}
+
+  section{padding:60px 0;border-top:1px solid var(--line);}
+  section:first-of-type{border-top:none;}
+  .head{max-width:640px;margin-bottom:28px;}
+  .kicker{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--green);margin-bottom:12px;}
+  .head h2{font-size:clamp(22px,2.8vw,28px);}
+  .head p{color:var(--gray);margin-top:12px;font-size:15px;}
+
+  .contact-card{background:rgba(255,255,255,0.035);border:1px solid var(--line);backdrop-filter:blur(10px);border-radius:20px;padding:30px;}
+  .contact-card h3{font-size:19px;margin-bottom:6px;}
+  .contact-card .row{display:flex;flex-wrap:wrap;gap:8px 20px;margin:16px 0 24px;font-size:14.5px;color:var(--gray);}
+  .contact-card .row a{color:var(--white);}
+  .contact-card .row a:hover{color:var(--green);}
+  .contact-card .row span.label{color:var(--gray);margin-right:6px;}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;}
+
+  .info-card{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:26px;}
+  .info-card p{color:var(--gray);font-size:14.5px;margin-top:10px;}
+  .info-card p + p{margin-top:14px;}
+  .info-card .path{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:13px;background:rgba(255,255,255,0.04);border:1px solid var(--line);padding:8px 14px;border-radius:10px;margin:14px 0;color:var(--white);}
+
+  .stack{display:flex;flex-direction:column;gap:18px;}
+
+  footer{border-top:1px solid var(--line);padding:44px 0 28px;background:#000;}
+  footer .top{text-align:center;margin-bottom:20px;}
+  footer .top h5{font-size:15px;margin-bottom:6px;font-family:'Space Grotesk',sans-serif;}
+  footer .top p{font-size:13px;color:var(--gray);}
+  footer .top a{color:var(--gray);}
+  footer .top a:hover{color:var(--green);}
+  footer .bottom{border-top:1px solid var(--line);padding-top:20px;font-size:12.5px;color:var(--gray);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+  footer .bottom a{margin-left:18px;}
+  footer .bottom a:hover{color:var(--green);}
+
+  @media(max-width:600px){
+    header .inner{padding:10px 0;flex-wrap:wrap;row-gap:10px;}
+    .logo-mark{height:70px;}
+    .logo-word{height:44px;}
+    nav{gap:8px;width:100%;justify-content:flex-end;}
+    nav a:not(.btn){display:none;}
+    .hero{padding:48px 0 48px;}
+    .btn-row{flex-direction:column;}
+    .btn-row .btn{width:100%;justify-content:center;}
+    footer .bottom{flex-direction:column;text-align:center;}
+    footer .bottom a{margin-left:0;margin-right:12px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap inner">
+    <a href="../index.html#top" class="logo-lockup">
+      <img class="logo-mark" src="../assets/logo-mark.png" alt="">
+      <img class="logo-word" src="../assets/logo-wordmark.png" alt="Smash Mídias">
+    </a>
+    <nav>
+      <a href="../index.html#produtos">Produtos</a>
+      <a href="../corre-mais.html">Corre Mais</a>
+      <a class="btn btn-green" href="https://wa.me/5511993047126" target="_blank" rel="noopener">Falar com o suporte</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="aurora"><div class="a1"></div><div class="a2"></div></div>
+  <div class="wrap">
+    <a href="../index.html#top" class="back-link">← Voltar pra Smash Mídias</a>
+    <div class="eyebrow"><span class="dot-live"></span> Suporte oficial</div>
+    <h1>T@RTARUGAS RUNNING — Suporte</h1>
+    <p class="sub">Suporte técnico oficial do aplicativo T@RTARUGAS RUNNING, desenvolvido e mantido pela Smash Mídias.</p>
+    <p class="lead">Precisa de ajuda com acesso, cadastro, treinos, GPS, ranking, eventos, loja, nutrição, SOS ou qualquer outra funcionalidade do aplicativo?<br><br>
+    A equipe da Smash Mídias é responsável pelo suporte técnico, manutenção e evolução do T@RTARUGAS RUNNING. Se você encontrou algum problema ou precisa de ajuda para utilizar o aplicativo, entre em contato conosco.</p>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="wrap">
+    <div class="head">
+      <div class="kicker">Contato</div>
+      <h2>Fale com o suporte</h2>
+    </div>
+    <div class="contact-card">
+      <h3>Smash Mídias</h3>
+      <div class="row">
+        <span><span class="label">Site:</span><a href="https://smashmidias.com.br" target="_blank" rel="noopener">smashmidias.com.br</a></span>
+        <span><span class="label">WhatsApp:</span><a href="https://wa.me/5511993047126" target="_blank" rel="noopener">11 99304-7126</a></span>
+        <span><span class="label">E-mail:</span><a href="mailto:kjmidiasdigitais@gmail.com">kjmidiasdigitais@gmail.com</a></span>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn-green" href="https://wa.me/5511993047126" target="_blank" rel="noopener">Falar com o suporte pelo WhatsApp</a>
+        <a class="btn btn-gold" href="mailto:kjmidiasdigitais@gmail.com">Enviar e-mail para o suporte</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="privacidade">
+  <div class="wrap">
+    <div class="head">
+      <div class="kicker">Privacidade e dados</div>
+      <h2>Como tratamos seus dados</h2>
+    </div>
+    <div class="info-card">
+      <p>O T@RTARUGAS RUNNING utiliza dados de perfil, atividades esportivas, localização durante treinos, informações de saúde fornecidas voluntariamente e outros dados necessários ao funcionamento do aplicativo.</p>
+      <p>Esses dados são tratados conforme a Política de Privacidade do aplicativo e utilizados exclusivamente para fornecer suas funcionalidades.</p>
+    </div>
+  </div>
+</section>
+
+<section id="exclusao-de-conta">
+  <div class="wrap">
+    <div class="head">
+      <div class="kicker">Exclusão de conta</div>
+      <h2>Como excluir sua conta</h2>
+    </div>
+    <div class="info-card">
+      <p>O usuário pode solicitar a exclusão da própria conta diretamente pelo aplicativo.</p>
+      <div class="path">Perfil → Excluir minha conta</div>
+      <p>A exclusão remove ou anonimiza os dados pessoais conforme as regras do aplicativo, preservando apenas registros necessários para histórico, segurança, obrigações legais ou integridade de dados relacionados à equipe.</p>
+      <p>Caso tenha dificuldade para excluir sua conta, entre em contato com o suporte da Smash Mídias.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <h5>T@RTARUGAS RUNNING</h5>
+      <p>Desenvolvimento, hospedagem, manutenção e suporte técnico: <a href="https://smashmidias.com.br" target="_blank" rel="noopener">Smash Mídias</a></p>
+    </div>
+    <div class="bottom">
+      <span>© 2026 Smash Mídias — São Bernardo do Campo, SP</span>
+      <span>
+        <a href="https://wa.me/5511993047126" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://www.instagram.com/smashmidias" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/smashmidias" target="_blank" rel="noopener">Facebook</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
