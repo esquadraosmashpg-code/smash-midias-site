@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Política de Privacidade — T@RTARUGAS RUNNING | Smash Mídias</title>
+<meta name="description" content="Política de Privacidade oficial do aplicativo T@RTARUGAS RUNNING, desenvolvido e mantido pela Smash Mídias.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#080808; --bg2:#121212; --bg3:#161616;
+    --gold:#F5B642; --blue:#2D9CFF; --purple:#8A4DFF; --green:#00D68F;
+    --white:#FFFFFF; --gray:#B5B5B5; --line:rgba(255,255,255,0.09);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--white);font-family:'Inter',sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
+  h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;font-weight:600;letter-spacing:-0.01em;}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(8,8,8,0.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
+  header .inner{display:flex;align-items:center;justify-content:space-between;padding:8px 0;}
+  .logo-lockup{display:flex;align-items:center;gap:14px;}
+  .logo-mark{height:92px;width:auto;filter:drop-shadow(0 0 16px rgba(45,156,255,0.4));}
+  .logo-word{height:50px;width:auto;filter:drop-shadow(0 0 10px rgba(45,156,255,0.25));}
+  nav{display:flex;align-items:center;gap:28px;}
+  nav a{font-size:14px;font-weight:500;color:var(--gray);transition:color .2s;}
+  nav a:hover{color:var(--white);}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;font-size:14px;font-weight:600;border:1px solid transparent;white-space:nowrap;cursor:pointer;transition:transform .15s, filter .15s;}
+  .btn:hover{transform:translateY(-1px);}
+  .btn-green{background:linear-gradient(100deg,var(--green),#00966b);color:#04140f;box-shadow:0 8px 24px -8px rgba(0,214,143,0.55);}
+  .btn-green:hover{filter:brightness(1.1);}
+  .btn-ghost{border-color:var(--line);color:var(--white);background:rgba(255,255,255,0.03);}
+  .btn-ghost:hover{border-color:rgba(255,255,255,0.3);}
+
+  .hero{position:relative;padding:64px 0 48px;overflow:hidden;border-bottom:1px solid var(--line);}
+  .aurora{position:absolute;inset:-20% -10%;z-index:0;filter:blur(60px);opacity:0.5;pointer-events:none;}
+  .aurora div{position:absolute;border-radius:50%;}
+  .a1{width:480px;height:480px;background:var(--green);top:-140px;left:-60px;animation:float1 16s ease-in-out infinite;}
+  .a2{width:380px;height:380px;background:var(--blue);bottom:-160px;right:-100px;animation:float2 20s ease-in-out infinite;}
+  @keyframes float1{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(50px,40px) scale(1.1);}}
+  @keyframes float2{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(-40px,-30px) scale(1.08);}}
+
+  .hero .wrap{position:relative;z-index:1;max-width:760px;}
+  .back-link{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;color:var(--gray);margin-bottom:28px;}
+  .back-link:hover{color:var(--white);}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--green);background:rgba(0,214,143,0.08);border:1px solid rgba(0,214,143,0.25);padding:6px 14px;border-radius:999px;margin-bottom:24px;}
+  .dot-live{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);}
+  .hero h1{font-size:clamp(26px,3.8vw,38px);line-height:1.18;margin-bottom:12px;}
+  .hero p.updated{color:var(--gray);font-size:13.5px;font-family:'JetBrains Mono',monospace;}
+
+  .legal{padding:56px 0 72px;}
+  .legal .wrap{max-width:820px;}
+  .legal .intro{color:var(--gray);font-size:15.5px;margin-bottom:44px;padding-bottom:36px;border-bottom:1px solid var(--line);}
+  .legal .intro p + p{margin-top:14px;}
+
+  .legal-section{margin-bottom:34px;}
+  .legal-section h2{font-size:18px;margin-bottom:12px;color:var(--white);}
+  .legal-section h2 .num{color:var(--green);font-family:'JetBrains Mono',monospace;font-size:14px;margin-right:10px;}
+  .legal-section p{color:var(--gray);font-size:14.5px;margin-bottom:10px;}
+  .legal-section ul{color:var(--gray);font-size:14.5px;margin:10px 0 10px 20px;}
+  .legal-section li{padding:3px 0;}
+  .legal-section .path{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:13px;background:rgba(255,255,255,0.04);border:1px solid var(--line);padding:8px 14px;border-radius:10px;margin:10px 0;color:var(--white);}
+
+  .contact-card{background:rgba(255,255,255,0.035);border:1px solid var(--line);backdrop-filter:blur(10px);border-radius:20px;padding:28px;margin-top:12px;}
+  .contact-card h3{font-size:17px;margin-bottom:14px;}
+  .contact-card .row{display:flex;flex-direction:column;gap:8px;font-size:14.5px;color:var(--gray);}
+  .contact-card .row a{color:var(--white);}
+  .contact-card .row a:hover{color:var(--green);}
+  .contact-card .row span.label{color:var(--gray);margin-right:6px;}
+  .contact-card .btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:20px;}
+
+  footer{border-top:1px solid var(--line);padding:44px 0 28px;background:#000;}
+  footer .top{text-align:center;margin-bottom:20px;}
+  footer .top h5{font-size:15px;margin-bottom:6px;font-family:'Space Grotesk',sans-serif;}
+  footer .top p{font-size:13px;color:var(--gray);}
+  footer .top a{color:var(--gray);}
+  footer .top a:hover{color:var(--green);}
+  footer .bottom{border-top:1px solid var(--line);padding-top:20px;font-size:12.5px;color:var(--gray);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+  footer .bottom a{margin-left:18px;}
+  footer .bottom a:hover{color:var(--green);}
+
+  @media(max-width:600px){
+    header .inner{padding:10px 0;flex-wrap:wrap;row-gap:10px;}
+    .logo-mark{height:70px;}
+    .logo-word{height:44px;}
+    nav{gap:8px;width:100%;justify-content:flex-end;}
+    nav a:not(.btn){display:none;}
+    .hero{padding:44px 0 36px;}
+    .legal{padding:40px 0 56px;}
+    footer .bottom{flex-direction:column;text-align:center;}
+    footer .bottom a{margin-left:0;margin-right:12px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap inner">
+    <a href="../index.html#top" class="logo-lockup">
+      <img class="logo-mark" src="../assets/logo-mark.png" alt="">
+      <img class="logo-word" src="../assets/logo-wordmark.png" alt="Smash Mídias">
+    </a>
+    <nav>
+      <a href="../index.html#produtos">Produtos</a>
+      <a href="../suporte-tartarugas-running/">Suporte</a>
+      <a class="btn btn-green" href="https://wa.me/5511993047126" target="_blank" rel="noopener">Falar com o suporte</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="aurora"><div class="a1"></div><div class="a2"></div></div>
+  <div class="wrap">
+    <a href="../index.html#top" class="back-link">← Voltar pra Smash Mídias</a>
+    <div class="eyebrow"><span class="dot-live"></span> Documento legal</div>
+    <h1>Política de Privacidade — T@RTARUGAS RUNNING</h1>
+    <p class="updated">Última atualização: 12 de agosto de 2026</p>
+  </div>
+</section>
+
+<section class="legal">
+  <div class="wrap">
+    <div class="intro">
+      <p>O T@RTARUGAS RUNNING é um aplicativo voltado à gestão e acompanhamento de atletas de corrida, com recursos de treinos, atividades esportivas, GPS, ranking, eventos, feed, nutrição, segurança e comunicação entre membros da equipe.</p>
+      <p>O aplicativo é desenvolvido, hospedado, mantido e suportado tecnicamente pela Smash Mídias.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2><span class="num">1.</span>Dados que podem ser coletados</h2>
+      <p>O aplicativo pode coletar e tratar, conforme a funcionalidade utilizada:</p>
+      <ul>
+        <li>nome;</li>
+        <li>e-mail;</li>
+        <li>telefone;</li>
+        <li>foto de perfil;</li>
+        <li>data de nascimento;</li>
+        <li>sexo;</li>
+        <li>peso;</li>
+        <li>altura;</li>
+        <li>tipo sanguíneo;</li>
+        <li>informações de saúde e condicionamento fornecidas voluntariamente;</li>
+        <li>alergias;</li>
+        <li>lesões;</li>
+        <li>restrições médicas;</li>
+        <li>dados de treino;</li>
+        <li>distância;</li>
+        <li>duração;</li>
+        <li>ritmo/pace;</li>
+        <li>parciais;</li>
+        <li>histórico de atividades;</li>
+        <li>localização e GPS durante atividades;</li>
+        <li>peso corporal e evolução;</li>
+        <li>registros nutricionais;</li>
+        <li>alimentos e refeições;</li>
+        <li>dados de eventos e check-in;</li>
+        <li>publicações no feed;</li>
+        <li>curtidas;</li>
+        <li>comentários;</li>
+        <li>mensagens;</li>
+        <li>denúncias;</li>
+        <li>conteúdo enviado pelo usuário;</li>
+        <li>informações relacionadas ao uso do recurso SOS;</li>
+        <li>dados técnicos necessários ao funcionamento, segurança e autenticação.</li>
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <h2><span class="num">2.</span>Localização e GPS</h2>
+      <p>O T@RTARUGAS RUNNING pode acessar a localização do dispositivo quando o usuário inicia uma atividade de treino ou utiliza recursos que dependem de localização.</p>
+      <p>A localização é utilizada para:</p>
+      <ul>
+        <li>registrar percursos;</li>
+        <li>calcular distância;</li>
+        <li>calcular pace;</li>
+        <li>acompanhar atividades esportivas;</li>
+        <li>permitir recursos de segurança relacionados ao treino.</li>
+      </ul>
+      <p>O acesso à localização depende da permissão concedida pelo usuário no dispositivo.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2><span class="num">3.</span>Dados de saúde e nutrição</h2>
+      <p>O aplicativo pode armazenar informações fornecidas voluntariamente pelo usuário relacionadas a saúde, condicionamento físico, peso, alergias, lesões, alimentação, hidratação e nutrição.</p>
+      <p>Esses dados são utilizados exclusivamente para funcionalidades do próprio aplicativo.</p>
+      <p>O T@RTARUGAS RUNNING não substitui orientação médica, nutricional ou profissional de saúde.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2><span class="num">4.</span>Conteúdo gerado pelos usuários</h2>
+      <p>O aplicativo possui recursos sociais, incluindo feed, publicações, curtidas, comentários, mensagens e outros conteúdos enviados pelos próprios usuários.</p>
+      <p>O usuário é responsável pelo conteúdo que publica.</p>
+      <p>Conteúdos que violem regras da equipe, legislação aplicável ou direitos de terceiros podem ser removidos ou moderados.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2><span class="num">5.</span>Finalidade do tratamento dos dados</h2>
+      <p>Os dados são utilizados para:</p>
+      <ul>
+        <li>autenticar usuários;</li>
+        <li>gerenciar perfis;</li>
+        <li>permitir aprovação de acesso;</li>
+        <li>acompanhar treinos e evolução;</li>
+        <li>registrar atividades;</li>
+        <li>calcular métricas esportivas;</li>
+        <li>exibir rankings;</li>
+        <li>gerenciar eventos;</li>
+        <li>fornecer recursos nutricionais;</li>
+        <li>operar feed e interação social;</li>
+        <li>permitir comunicação entre usuários;</li>
+        <li>fornecer recursos de segurança e SOS;</li>
+        <li>enviar notificações;</li>
+        <li>manter histórico da equipe;</li>
+        <li>prevenir fraude e abuso;</li>
+        <li>garantir segurança e funcionamento do aplicativo.</li>
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <h2><span class="num">6.</span>Armazenamento e infraestrutura</h2>
+      <p>O aplicativo utiliza serviços de infraestrutura e banco de dados em nuvem para autenticação, armazenamento e funcionamento das funcionalidades.</p>
+      <p>Entre os serviços utilizados pode estar o Supabase, incluindo autenticação, banco de dados e armazenamento.</p>
+      <p>Dados podem ser processados por provedores de infraestrutura estritamente para permitir o funcionamento do aplicativo.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2><span class="num">7.</span>Compartilhamento de dados</h2>
+      <p>A Smash Mídias e a equipe responsável pelo T@RTARUGAS RUNNING não comercializam dados pessoais dos usuários.</p>
+      <p>Dados podem ser compartilhados apenas quando necessário para:</p>
+      <ul>
+        <li>funcionamento do aplicativo;</li>
+        <li>infraestrutura;</li>
+        <li>segurança;</li>
+        <li>cumprimento de obrigação legal;</li>
+        <li>proteção dos usuários;</li>
+        <li>execução das funcionalidades solicitadas pelo próprio usuário.</li>
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <h2><span class="num">8.</span>Notificações</h2>
+      <p>O aplicativo pode enviar notificações relacionadas a:</p>
+      <ul>
+        <li>treinos;</li>
+        <li>eventos;</li>
+        <li>segurança;</li>
+        <li>SOS;</li>
+        <li>atividades da equipe;</li>
+        <li>informações administrativas;</li>
+        <li>outras funcionalidades do aplicativo.</li>
+      </ul>
+      <p>O usuário pode controlar permissões de notificações nas configurações do dispositivo.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2><span class="num">9.</span>Exclusão de conta</h2>
+      <p>O usuário pode solicitar a exclusão da própria conta diretamente pelo aplicativo.</p>
+      <div class="path">Perfil → Excluir minha conta</div>
+      <p>A exclusão pode remover ou anonimizar dados pessoais, mantendo apenas registros necessários para:</p>
+      <ul>
+        <li>integridade do histórico da equipe;</li>
+        <li>segurança;</li>
+        <li>prevenção de fraude;</li>
+        <li>obrigações legais;</li>
+        <li>registros relacionados a atividades, eventos ou operações que precisem ser preservados.</li>
+      </ul>
+      <p>Caso tenha dificuldade para excluir sua conta, o usuário pode entrar em contato com o suporte.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2><span class="num">10.</span>Direitos do usuário</h2>
+      <p>O usuário pode solicitar:</p>
+      <ul>
+        <li>acesso aos seus dados;</li>
+        <li>correção de dados;</li>
+        <li>atualização de informações;</li>
+        <li>exclusão de dados quando aplicável;</li>
+        <li>esclarecimentos sobre o tratamento de dados.</li>
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <h2><span class="num">11.</span>Segurança</h2>
+      <p>São adotadas medidas técnicas e administrativas razoáveis para proteger os dados contra acesso não autorizado, alteração indevida, perda ou divulgação indevida.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2><span class="num">12.</span>Crianças e adolescentes</h2>
+      <p>O aplicativo não é direcionado especificamente a crianças menores de 13 anos.</p>
+      <p>O acesso ao aplicativo depende de cadastro e aprovação pela equipe responsável.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2><span class="num">13.</span>Alterações nesta política</h2>
+      <p>Esta Política de Privacidade poderá ser atualizada para refletir alterações no aplicativo, legislação ou práticas de tratamento de dados.</p>
+      <p>A versão mais recente estará sempre disponível nesta página.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2><span class="num">14.</span>Contato</h2>
+      <p>Responsável técnico e suporte:</p>
+      <div class="contact-card">
+        <h3>Smash Mídias</h3>
+        <div class="row">
+          <span><span class="label">Site:</span><a href="https://smashmidias.com.br" target="_blank" rel="noopener">smashmidias.com.br</a></span>
+          <span><span class="label">Suporte do T@RTARUGAS RUNNING:</span><a href="https://smashmidias.com.br/suporte-tartarugas-running" target="_blank" rel="noopener">smashmidias.com.br/suporte-tartarugas-running</a></span>
+          <span><span class="label">E-mail:</span><a href="mailto:kjmidiasdigitais@gmail.com">kjmidiasdigitais@gmail.com</a></span>
+          <span><span class="label">WhatsApp:</span><a href="https://wa.me/5511993047126" target="_blank" rel="noopener">11 99304-7126</a></span>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn-green" href="https://wa.me/5511993047126" target="_blank" rel="noopener">Falar com o suporte pelo WhatsApp</a>
+          <a class="btn btn-ghost" href="mailto:kjmidiasdigitais@gmail.com">Enviar e-mail</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <h5>T@RTARUGAS RUNNING</h5>
+      <p>Desenvolvimento, hospedagem, manutenção e suporte técnico: <a href="https://smashmidias.com.br" target="_blank" rel="noopener">Smash Mídias</a></p>
+    </div>
+    <div class="bottom">
+      <span>© 2026 Smash Mídias — São Bernardo do Campo, SP</span>
+      <span>
+        <a href="https://wa.me/5511993047126" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://www.instagram.com/smashmidias" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/smashmidias" target="_blank" rel="noopener">Facebook</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
