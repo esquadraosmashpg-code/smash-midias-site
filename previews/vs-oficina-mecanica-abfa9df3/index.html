@@ -11,8 +11,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{color-scheme:light dark;--bg:#F3F5F2;--surface:#FFFFFF;--ink:#0E1411;--muted:#55605A;--line:#DCE2DD;--accent:#1B6B50;--accent-ink:#FFFFFF;--r:16px}
-@media (prefers-color-scheme:dark){:root{--bg:#0C1210;--surface:#121A16;--ink:#EEF3EF;--muted:#9AA7A0;--line:#25312B;--accent:#3DBE8E;--accent-ink:#05110C}}
+:root{color-scheme:light dark;--bg:#F3F5F2;--surface:#FFFFFF;--ink:#0E1411;--muted:#55605A;--line:#DCE2DD;--accent:#1B6B50;--accent-ink:#FFFFFF;--gold:#1B6B50;--r:16px}
+@media (prefers-color-scheme:dark){:root{--bg:#0C1210;--surface:#121A16;--ink:#EEF3EF;--muted:#9AA7A0;--line:#25312B;--accent:#3DBE8E;--accent-ink:#05110C;--gold:#3DBE8E}}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth;scroll-padding-top:76px}
 body{background:var(--bg);color:var(--ink);font-family:"Geist",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -27,7 +27,10 @@ a{color:inherit}
 .btn:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 .nav{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:saturate(180%) blur(16px);-webkit-backdrop-filter:saturate(180%) blur(16px);border-bottom:1px solid var(--line)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px}
-.brand{font-weight:700;letter-spacing:-.02em;text-decoration:none;font-size:18px}
+.brand{font-weight:700;letter-spacing:-.02em;text-decoration:none;font-size:18px;display:inline-flex;align-items:center;gap:10px}
+.brand img{width:40px;height:40px;border-radius:50%;display:block}
+.demo{background:var(--ink);color:var(--bg);font-size:12.5px;text-align:center;padding:7px 16px;letter-spacing:.01em}
+.chk{height:12px;background:repeating-conic-gradient(var(--accent) 0 25%,var(--gold) 0 50%) 0 0/24px 24px;opacity:.9}
 .nav .btn{height:42px;padding:0 18px;font-size:15px}
 .hero{position:relative;padding:64px 0 40px;overflow:hidden}
 .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
@@ -64,7 +67,7 @@ h2{font-size:clamp(30px,4.6vw,56px);line-height:1.03;letter-spacing:-.04em;font-
 .morelink{display:inline-flex;margin-top:18px;font-weight:600;color:var(--accent);text-decoration:none}
 .morelink:hover{text-decoration:underline}
 .rev{flex:0 0 min(420px,86vw);scroll-snap-align:start;background:var(--surface);border:1px solid var(--line);border-radius:calc(var(--r)*1.3);padding:28px;display:flex;flex-direction:column;gap:18px;justify-content:space-between}
-.rev .stars{color:var(--accent);letter-spacing:3px;font-size:18px}
+.rev .stars{color:var(--gold);letter-spacing:3px;font-size:18px}
 .rev blockquote{font-size:18px;line-height:1.5;letter-spacing:-.01em}
 .rev .who{font-size:15px;color:var(--muted);font-weight:500}
 .rev .who b{color:var(--ink);font-weight:600}
@@ -109,6 +112,7 @@ footer strong{color:var(--ink)}
 </style>
 </head>
 <body>
+<div class="demo">Protótipo demonstrativo da Smash Mídias. Conteúdo e imagens sujeitos à validação do proprietário.</div>
 <header class="nav"><div class="wrap"><a class="brand" href="#topo">VS Oficina Mecânica</a><a class="btn btn-primary" href="https://wa.me/5511948835519?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener">Pedir orçamento</a></div></header>
 <main id="topo">
 <section class="hero"><div class="wrap"><div class="reveal"><h1>VS Oficina Mecânica</h1><p class="lede">Oficina mecânica em São Bernardo do Campo, especializada desde o ano 2000.</p><div class="cta-row"><a class="btn btn-primary" href="https://wa.me/5511948835519?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener">Pedir orçamento</a><a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=R.%20Joaquim%20Nabuco%2C%20491%2C%20S%C3%A3o%20Bernardo%20do%20Campo%20-%20SP" target="_blank" rel="noopener">Como chegar</a></div></div><div class="vis reveal"><img src="img/hero.jpg" alt="Interior da VS Oficina Mecânica" loading="eager"><div class="badge">4,9 no Google</div></div></div></section>
@@ -121,14 +125,15 @@ footer strong{color:var(--ink)}
 <section class="block reveal" id="contato"><div class="wrap"><h2>Onde estamos</h2><p class="sub">R. Joaquim Nabuco, 491, São Bernardo do Campo.</p><div class="where"><div class="card"><div class="row"><span class="k">Endereço</span><span class="v">R. Joaquim Nabuco, 491<br>São Bernardo do Campo, SP</span></div><div class="row"><span class="k">WhatsApp e telefone</span><span class="v">(11) 94883-5519</span></div><div class="row"><span class="k">Instagram</span><span class="v">@oficina_vs</span></div><a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=R.%20Joaquim%20Nabuco%2C%20491%2C%20S%C3%A3o%20Bernardo%20do%20Campo%20-%20SP" target="_blank" rel="noopener">Como chegar</a></div><div class="map"><iframe title="Mapa" src="https://www.google.com/maps?q=R.%20Joaquim%20Nabuco%2C%20491%2C%20S%C3%A3o%20Bernardo%20do%20Campo%20-%20SP&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div></div></div></section>
 <section class="block reveal"><div class="wrap"><div class="final"><h2>Peça seu orçamento agora</h2><a class="btn" href="https://wa.me/5511948835519?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener">Pedir orçamento</a></div></div></section>
 </main>
-<footer><div class="wrap"><div><strong>VS Oficina Mecânica</strong><br>R. Joaquim Nabuco, 491, São Bernardo do Campo - SP</div><div>(11) 94883-5519</div></div><div class="wrap"><p class="note">Esboço criado pela Smash Mídias com dados públicos da empresa (Google Maps e Instagram @oficina_vs). Sujeito a ajustes pelo proprietário.</p></div></footer>
+
+<footer><div class="wrap"><div><strong>VS Oficina Mecânica</strong><br>R. Joaquim Nabuco, 491, São Bernardo do Campo - SP</div><div>(11) 94883-5519</div></div><div class="wrap"><p class="note">Protótipo demonstrativo criado pela Smash Mídias com dados públicos da empresa (Google Maps e Instagram @oficina_vs). Conteúdo e imagens sujeitos à validação do proprietário.</p></div></footer>
 <div class="fab"><a class="btn btn-primary" href="https://wa.me/5511948835519?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener">Pedir orçamento</a></div>
 <script>
 (function(){
 var els=document.querySelectorAll('.reveal');
 if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')})}
 else{var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});els.forEach(function(e){io.observe(e)})}
-var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+var reduce=true;
 function fmt(v,d){return v.toFixed(d).replace('.',',')}
 function count(el){var t=parseFloat(el.getAttribute('data-to')),d=parseInt(el.getAttribute('data-d')||'0',10),sep=el.getAttribute('data-sep')==='1';
  if(reduce){el.textContent=sep?Math.round(t).toString():fmt(t,d);return}
