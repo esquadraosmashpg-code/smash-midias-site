@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>VS Oficina Mecânica | São Bernardo do Campo</title>
+<meta name="description" content="Oficina mecânica em São Bernardo do Campo, especializada desde o ano 2000.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light dark;--bg:#F3F5F2;--surface:#FFFFFF;--ink:#0E1411;--muted:#55605A;--line:#DCE2DD;--accent:#1B6B50;--accent-ink:#FFFFFF;--r:14px}
+@media (prefers-color-scheme:dark){:root{--bg:#0C1210;--surface:#121A16;--ink:#EEF3EF;--muted:#9AA7A0;--line:#25312B;--accent:#3DBE8E;--accent-ink:#05110C}}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:"Geist",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{width:100%;max-width:1160px;margin:0 auto;padding:0 20px}
+.btn{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;height:48px;padding:0 22px;border-radius:var(--r);font-weight:600;font-size:16px;text-decoration:none;border:1px solid transparent;transition:transform .15s ease,background .2s ease}
+.btn:active{transform:scale(.98)}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-primary:hover{filter:brightness(1.06)}
+.btn-ghost{border-color:var(--line);background:transparent;color:var(--ink)}
+.btn-ghost:hover{background:var(--surface)}
+.btn:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.brand{font-weight:700;letter-spacing:-.01em;text-decoration:none;font-size:17px}
+.nav .btn{height:40px;padding:0 16px;font-size:15px}
+.hero{padding:56px 0 24px}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+h1{font-size:clamp(40px,6.4vw,84px);line-height:1;letter-spacing:-.04em;font-weight:700;margin-bottom:22px}
+.lede{font-size:clamp(18px,2vw,22px);color:var(--muted);max-width:30ch;margin-bottom:30px}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap}
+.panel{aspect-ratio:1/1;border-radius:calc(var(--r)*1.7);background:color-mix(in srgb,var(--accent) 11%,var(--surface));border:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between;padding:28px;overflow:hidden;position:relative}
+.panel .mono{font-size:clamp(120px,22vw,260px);line-height:.8;letter-spacing:-.06em;font-weight:800;color:var(--accent)}
+.panel .loc{font-size:15px;color:var(--muted);font-weight:500}
+.panel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.rating{padding:40px 0}
+.rating .wrap{display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding-top:28px;padding-bottom:28px}
+.rating .num{font-size:clamp(56px,9vw,104px);font-weight:700;letter-spacing:-.05em;line-height:1}
+.rating .txt{font-size:19px;color:var(--muted);max-width:34ch}
+.rating .txt b{color:var(--ink);font-weight:600}
+section.block{padding:72px 0}
+h2{font-size:clamp(30px,4.4vw,52px);line-height:1.04;letter-spacing:-.035em;font-weight:700;margin-bottom:32px}
+.services{display:grid;grid-template-columns:repeat(2,1fr);gap:0 48px}
+.svc{padding:22px 0;border-top:1px solid var(--line)}
+.svc h3{font-size:clamp(22px,2.6vw,30px);letter-spacing:-.025em;font-weight:600;line-height:1.15}
+.svc p{margin-top:8px;color:var(--muted);font-size:17px}
+.info{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:26px;display:flex;flex-direction:column;gap:6px}
+.card .k{font-size:14px;color:var(--muted);font-weight:500}
+.card .v{font-size:21px;letter-spacing:-.015em;font-weight:600;line-height:1.3}
+.card a.link{margin-top:10px;font-weight:600;color:var(--accent);text-decoration:none}
+.card a.link:hover{text-decoration:underline}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r);border:1px solid var(--line)}
+.final{background:var(--accent);color:var(--accent-ink);border-radius:calc(var(--r)*1.7);padding:56px 40px;display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap}
+.final h2{margin:0;max-width:16ch;color:var(--accent-ink)}
+.final .btn{background:var(--accent-ink);color:var(--accent)}
+footer{padding:48px 0 40px;color:var(--muted);font-size:15px}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+footer strong{color:var(--ink)}
+.note{margin-top:20px;font-size:13px}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}.btn{transition:none}}
+@media (max-width:820px){.hero{padding-top:36px}.hero .wrap{grid-template-columns:1fr;gap:32px}.panel{aspect-ratio:16/10}.panel .mono{font-size:150px}.services,.info,.gallery{grid-template-columns:1fr}.final{padding:40px 26px}section.block{padding:52px 0}}
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap"><a class="brand" href="#topo">VS Oficina Mecânica</a><a class="btn btn-primary" href="https://wa.me/5511948835519?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener">WhatsApp</a></div></header>
+<main id="topo">
+<section class="hero"><div class="wrap"><div><h1>VS Oficina Mecânica</h1><p class="lede">Oficina mecânica em São Bernardo do Campo, especializada desde o ano 2000.</p><div class="cta-row"><a class="btn btn-primary" href="https://wa.me/5511948835519?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener">Chamar no WhatsApp</a><a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=R.%20Joaquim%20Nabuco%2C%20491%2C%20S%C3%A3o%20Bernardo%20do%20Campo%20-%20SP" target="_blank" rel="noopener">Como chegar</a></div></div><div class="panel"><div class="mono" aria-hidden="true">VS</div><div class="loc">São Bernardo do Campo, SP</div></div></div></section>
+<section class="rating reveal" aria-label="Avaliação no Google"><div class="wrap"><div class="num">4,9</div><div class="txt"><b>nota de 5 no Google</b><br>com 76 avaliações de clientes.</div></div></section>
+<section class="block reveal" id="servicos"><div class="wrap"><h2>O que fazemos</h2><div class="services"><div class="svc"><h3>Motor e cabeçote</h3><p>Especialidade da casa.</p></div><div class="svc"><h3>Serviços rápidos</h3></div><div class="svc"><h3>Oficina sustentável</h3></div></div></div></section>
+
+<section class="block reveal" id="contato"><div class="wrap"><h2>Onde estamos</h2><div class="info"><div class="card"><span class="k">Endereço</span><span class="v">R. Joaquim Nabuco, 491<br>São Bernardo do Campo, SP</span><a class="link" href="https://www.google.com/maps/search/?api=1&query=R.%20Joaquim%20Nabuco%2C%20491%2C%20S%C3%A3o%20Bernardo%20do%20Campo%20-%20SP" target="_blank" rel="noopener">Abrir no mapa</a></div>
+<div class="card"><span class="k">WhatsApp e telefone</span><span class="v">(11) 94883-5519</span><a class="link" href="https://wa.me/5511948835519?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener">Chamar no WhatsApp</a></div><div class="card"><span class="k">Instagram</span><span class="v">@oficina_vs</span><a class="link" href="https://www.instagram.com/oficina_vs/" target="_blank" rel="noopener">Ver o perfil</a></div></div></div></section>
+<section class="block reveal"><div class="wrap"><div class="final"><h2>Peça seu orçamento pelo WhatsApp</h2><a class="btn" href="https://wa.me/5511948835519?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener">Chamar agora</a></div></div></section>
+</main>
+<footer><div class="wrap"><div><strong>VS Oficina Mecânica</strong><br>R. Joaquim Nabuco, 491, São Bernardo do Campo - SP</div><div>(11) 94883-5519</div></div><div class="wrap"><p class="note">Esboço criado pela Smash Mídias com dados públicos da empresa (Google Maps e Instagram @oficina_vs). Sujeito a ajustes pelo proprietário.</p></div></footer>
+<script>
+(function(){var els=document.querySelectorAll('.reveal');if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});
+els.forEach(function(e){io.observe(e)})})();
+</script>
+</body>
+</html>
