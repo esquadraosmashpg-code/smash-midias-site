@@ -29,6 +29,8 @@ a{color:inherit}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px}
 .brand{font-weight:700;letter-spacing:-.02em;text-decoration:none;font-size:18px;display:inline-flex;align-items:center;gap:10px}
 .brand img{width:40px;height:40px;border-radius:50%;display:block}
+.brand{white-space:nowrap}
+@media (max-width:420px){.brand{font-size:16px;gap:8px}.brand img{width:34px;height:34px}.nav .btn{padding:0 16px;height:44px;font-size:15px}}
 .demo{background:var(--ink);color:var(--bg);font-size:12.5px;text-align:center;padding:7px 16px;letter-spacing:.01em}
 .chk{height:12px;background:repeating-conic-gradient(var(--accent) 0 25%,var(--gold) 0 50%) 0 0/24px 24px;opacity:.9}
 .nav .btn{height:42px;padding:0 18px;font-size:15px}
@@ -113,7 +115,7 @@ footer strong{color:var(--ink)}
 </head>
 <body>
 <div class="demo">Protótipo demonstrativo da Smash Mídias. Conteúdo e imagens sujeitos à validação do proprietário.</div>
-<header class="nav"><div class="wrap"><a class="brand" href="#topo">Rodtec</a><a class="btn btn-primary" href="https://wa.me/5511947767785?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener">Pedir orçamento</a></div></header>
+<header class="nav"><div class="wrap"><a class="brand" href="#topo"><img src="img/logo.png" alt="" width="40" height="40">Rodtec</a><a class="btn btn-primary" href="https://wa.me/5511947767785?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener">Pedir orçamento</a></div></header>
 <main id="topo">
 <section class="hero"><div class="wrap"><div class="reveal"><h1>Rodtec Serviços Automotivos</h1><p class="lede">Oficina mecânica e revisão de veículos, em São Bernardo do Campo.</p><div class="cta-row"><a class="btn btn-primary" href="https://wa.me/5511947767785?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener">Pedir orçamento</a><a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=R.%20Jurubatuba%2C%201178%2C%20S%C3%A3o%20Bernardo%20do%20Campo%20-%20SP" target="_blank" rel="noopener">Como chegar</a></div></div><div class="vis reveal"><div class="orb" aria-hidden="true"><div class="mono">R</div></div><div class="badge">4,9 no Google</div></div></div></section>
 <section class="stats reveal" aria-label="Números"><div class="wrap"><div class="stat"><div class="n" data-to="4.9" data-d="1">4,9</div><div class="t">nota de 5 no Google</div></div><div class="stat"><div class="n" data-to="123" data-d="0" data-sep="1">123</div><div class="t">avaliações de clientes</div></div></div></section>
