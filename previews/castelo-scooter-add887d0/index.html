@@ -9,81 +9,113 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{color-scheme:light dark;--bg:#F4F5F7;--surface:#FFFFFF;--ink:#0E1218;--muted:#566070;--line:#DEE1E7;--accent:#2447F5;--accent-ink:#FFFFFF;--r:14px}
+:root{color-scheme:light dark;--bg:#F4F5F7;--surface:#FFFFFF;--ink:#0E1218;--muted:#566070;--line:#DEE1E7;--accent:#2447F5;--accent-ink:#FFFFFF;--r:16px}
 @media (prefers-color-scheme:dark){:root{--bg:#0B0D12;--surface:#121620;--ink:#EEF0F5;--muted:#9AA3B5;--line:#232938;--accent:#6F8CFF;--accent-ink:#070A14}}
 *{box-sizing:border-box;margin:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:"Geist",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{background:var(--bg);color:var(--ink);font-family:"Geist",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit}
-.wrap{width:100%;max-width:1160px;margin:0 auto;padding:0 20px}
-.btn{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;height:48px;padding:0 22px;border-radius:var(--r);font-weight:600;font-size:16px;text-decoration:none;border:1px solid transparent;transition:transform .15s ease,background .2s ease}
-.btn:active{transform:scale(.98)}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 22px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;height:50px;padding:0 24px;border-radius:var(--r);font-weight:600;font-size:16px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .18s ease,filter .2s ease,background .2s ease}
+.btn:active{transform:scale(.97)}
 .btn-primary{background:var(--accent);color:var(--accent-ink)}
-.btn-primary:hover{filter:brightness(1.06)}
+.btn-primary:hover{filter:brightness(1.07);transform:translateY(-1px)}
 .btn-ghost{border-color:var(--line);background:transparent;color:var(--ink)}
 .btn-ghost:hover{background:var(--surface)}
 .btn:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
-.nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
-.brand{font-weight:700;letter-spacing:-.01em;text-decoration:none;font-size:17px}
-.nav .btn{height:40px;padding:0 16px;font-size:15px}
-.hero{padding:56px 0 24px}
-.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
-h1{font-size:clamp(40px,6.4vw,84px);line-height:1;letter-spacing:-.04em;font-weight:700;margin-bottom:22px}
-.lede{font-size:clamp(18px,2vw,22px);color:var(--muted);max-width:30ch;margin-bottom:30px}
+.nav{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:saturate(180%) blur(16px);-webkit-backdrop-filter:saturate(180%) blur(16px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px}
+.brand{font-weight:700;letter-spacing:-.02em;text-decoration:none;font-size:18px}
+.nav .btn{height:42px;padding:0 18px;font-size:15px}
+.hero{position:relative;padding:64px 0 40px;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+h1{font-size:clamp(42px,6.6vw,92px);line-height:.98;letter-spacing:-.045em;font-weight:700;margin-bottom:24px}
+.lede{font-size:clamp(18px,2vw,23px);color:var(--muted);max-width:30ch;margin-bottom:32px}
 .cta-row{display:flex;gap:12px;flex-wrap:wrap}
-.panel{aspect-ratio:1/1;border-radius:calc(var(--r)*1.7);background:color-mix(in srgb,var(--accent) 11%,var(--surface));border:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between;padding:28px;overflow:hidden;position:relative}
-.panel .mono{font-size:clamp(120px,22vw,260px);line-height:.8;letter-spacing:-.06em;font-weight:800;color:var(--accent)}
-.panel .loc{font-size:15px;color:var(--muted);font-weight:500}
-.panel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.rating{padding:40px 0}
-.rating .wrap{display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding-top:28px;padding-bottom:28px}
-.rating .num{font-size:clamp(56px,9vw,104px);font-weight:700;letter-spacing:-.05em;line-height:1}
-.rating .txt{font-size:19px;color:var(--muted);max-width:34ch}
-.rating .txt b{color:var(--ink);font-weight:600}
-section.block{padding:72px 0}
-h2{font-size:clamp(30px,4.4vw,52px);line-height:1.04;letter-spacing:-.035em;font-weight:700;margin-bottom:32px}
-.services{display:grid;grid-template-columns:repeat(2,1fr);gap:0 48px}
-.svc{padding:22px 0;border-top:1px solid var(--line)}
-.svc h3{font-size:clamp(22px,2.6vw,30px);letter-spacing:-.025em;font-weight:600;line-height:1.15}
-.svc p{margin-top:8px;color:var(--muted);font-size:17px}
-.info{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:26px;display:flex;flex-direction:column;gap:6px}
+.vis{position:relative;aspect-ratio:4/5;border-radius:calc(var(--r)*2);overflow:hidden;background:color-mix(in srgb,var(--accent) 12%,var(--surface));border:1px solid var(--line);box-shadow:0 30px 80px -30px color-mix(in srgb,var(--accent) 45%,transparent)}
+.vis img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.06)}
+.vis .badge{position:absolute;left:16px;bottom:16px;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:14px;padding:10px 14px;font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px}
+.orb{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.orb::before,.orb::after{content:"";position:absolute;border-radius:50%;filter:blur(40px);opacity:.55;animation:float 14s ease-in-out infinite}
+.orb::before{width:62%;height:62%;background:var(--accent);left:-8%;top:-6%}
+.orb::after{width:50%;height:50%;background:color-mix(in srgb,var(--accent) 55%,var(--bg));right:-6%;bottom:-4%;animation-delay:-7s}
+.orb .mono{position:relative;z-index:1;font-size:clamp(120px,20vw,240px);line-height:.8;letter-spacing:-.07em;font-weight:800;color:var(--accent-ink);mix-blend-mode:normal;text-shadow:0 10px 40px color-mix(in srgb,var(--accent) 60%,transparent)}
+@media (prefers-color-scheme:light){.orb .mono{color:var(--ink)}}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(8%,10%) scale(1.12)}}
+.stats{padding:28px 0}
+.stats .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:24px 26px}
+.stat .n{font-size:clamp(46px,6vw,72px);font-weight:700;letter-spacing:-.05em;line-height:1}
+.stat .t{margin-top:8px;color:var(--muted);font-size:16px}
+section.block{padding:84px 0}
+h2{font-size:clamp(30px,4.6vw,56px);line-height:1.03;letter-spacing:-.04em;font-weight:700;margin-bottom:12px}
+.sub{color:var(--muted);font-size:19px;max-width:44ch;margin-bottom:36px}
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.svc{display:flex;flex-direction:column;justify-content:space-between;gap:32px;background:var(--surface);border:1px solid var(--line);border-radius:calc(var(--r)*1.3);padding:28px;text-decoration:none;min-height:210px;transition:transform .25s cubic-bezier(.16,1,.3,1),border-color .25s ease,box-shadow .25s ease}
+.svc:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 24px 50px -28px color-mix(in srgb,var(--accent) 55%,transparent)}
+.svc h3{font-size:clamp(22px,2.4vw,28px);letter-spacing:-.03em;font-weight:600;line-height:1.12}
+.svc p{color:var(--muted);margin-top:8px;font-size:16px}
+.svc .go{font-weight:600;color:var(--accent);display:flex;align-items:center;gap:8px;font-size:16px}
+.svc .go span{transition:transform .25s ease}
+.svc:hover .go span{transform:translateX(5px)}
+.reviews{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 22px 18px;margin:0 -22px;scrollbar-width:thin}
+.rev{flex:0 0 min(420px,86vw);scroll-snap-align:start;background:var(--surface);border:1px solid var(--line);border-radius:calc(var(--r)*1.3);padding:28px;display:flex;flex-direction:column;gap:18px;justify-content:space-between}
+.rev .stars{color:var(--accent);letter-spacing:3px;font-size:18px}
+.rev blockquote{font-size:18px;line-height:1.5;letter-spacing:-.01em}
+.rev .who{font-size:15px;color:var(--muted);font-weight:500}
+.rev .who b{color:var(--ink);font-weight:600}
+.srcnote{margin-top:14px;font-size:13px;color:var(--muted)}
+.where{display:grid;grid-template-columns:.85fr 1.15fr;gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:calc(var(--r)*1.3);padding:30px;display:flex;flex-direction:column;gap:22px;justify-content:space-between}
+.card .row{display:flex;flex-direction:column;gap:4px}
 .card .k{font-size:14px;color:var(--muted);font-weight:500}
-.card .v{font-size:21px;letter-spacing:-.015em;font-weight:600;line-height:1.3}
-.card a.link{margin-top:10px;font-weight:600;color:var(--accent);text-decoration:none}
-.card a.link:hover{text-decoration:underline}
-.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r);border:1px solid var(--line)}
-.final{background:var(--accent);color:var(--accent-ink);border-radius:calc(var(--r)*1.7);padding:56px 40px;display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap}
-.final h2{margin:0;max-width:16ch;color:var(--accent-ink)}
+.card .v{font-size:22px;letter-spacing:-.02em;font-weight:600;line-height:1.3}
+.map{border-radius:calc(var(--r)*1.3);overflow:hidden;border:1px solid var(--line);min-height:340px;background:var(--surface)}
+.map iframe{width:100%;height:100%;min-height:340px;border:0;display:block}
+.final{background:var(--accent);color:var(--accent-ink);border-radius:calc(var(--r)*2);padding:64px 44px;display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap}
+.final h2{margin:0;max-width:15ch;color:var(--accent-ink)}
 .final .btn{background:var(--accent-ink);color:var(--accent)}
-footer{padding:48px 0 40px;color:var(--muted);font-size:15px}
+footer{padding:48px 0 110px;color:var(--muted);font-size:15px}
 footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
 footer strong{color:var(--ink)}
 .note{margin-top:20px;font-size:13px}
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.fab{position:fixed;right:20px;bottom:20px;z-index:40;box-shadow:0 18px 40px -12px color-mix(in srgb,var(--accent) 70%,transparent)}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
 .reveal.in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}.btn{transition:none}}
-@media (max-width:820px){.hero{padding-top:36px}.hero .wrap{grid-template-columns:1fr;gap:32px}.panel{aspect-ratio:16/10}.panel .mono{font-size:150px}.services,.info,.gallery{grid-template-columns:1fr}.final{padding:40px 26px}section.block{padding:52px 0}}
+@supports (animation-timeline:scroll()){.vis img{animation:drift linear both;animation-timeline:scroll(root block);animation-range:0 70vh}}
+@keyframes drift{from{transform:scale(1.06) translateY(0)}to{transform:scale(1.12) translateY(-3%)}}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.orb::before,.orb::after{animation:none}.vis img{animation:none}html{scroll-behavior:auto}.btn,.svc{transition:none}}
+@media (max-width:860px){.hero{padding:34px 0 24px}.hero .wrap{grid-template-columns:1fr;gap:30px}.vis{aspect-ratio:5/4}.where{grid-template-columns:1fr}.final{padding:44px 26px}section.block{padding:56px 0}.fab{left:16px;right:16px}.fab .btn{width:100%}footer{padding-bottom:120px}}
 </style>
 </head>
 <body>
-<header class="nav"><div class="wrap"><a class="brand" href="#topo">Castelo Scooter</a><a class="btn btn-primary" href="https://wa.me/5511977727710?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener">WhatsApp</a></div></header>
+<header class="nav"><div class="wrap"><a class="brand" href="#topo">Castelo Scooter</a><a class="btn btn-primary" href="https://wa.me/5511977727710?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener">Pedir orçamento</a></div></header>
 <main id="topo">
-<section class="hero"><div class="wrap"><div><h1>Castelo Scooter</h1><p class="lede">Oficina especializada em scooter, em São Bernardo do Campo.</p><div class="cta-row"><a class="btn btn-primary" href="https://wa.me/5511977727710?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener">Chamar no WhatsApp</a><a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Av.%20Humberto%20de%20Alencar%20Castelo%20Branco%2C%201387%2C%20S%C3%A3o%20Bernardo%20do%20Campo%20-%20SP" target="_blank" rel="noopener">Como chegar</a></div></div><div class="panel"><div class="mono" aria-hidden="true">CS</div><div class="loc">São Bernardo do Campo, SP</div></div></div></section>
-<section class="rating reveal" aria-label="Avaliação no Google"><div class="wrap"><div class="num">5,0</div><div class="txt"><b>nota de 5 no Google</b><br>com 248 avaliações de clientes.</div></div></section>
-<section class="block reveal" id="servicos"><div class="wrap"><h2>O que fazemos</h2><div class="services"><div class="svc"><h3>Revisão completa</h3></div><div class="svc"><h3>Manutenção preventiva e corretiva</h3></div><div class="svc"><h3>Diagnóstico avançado</h3></div></div></div></section>
-
-<section class="block reveal" id="contato"><div class="wrap"><h2>Onde estamos</h2><div class="info"><div class="card"><span class="k">Endereço</span><span class="v">Av. Humberto de Alencar Castelo Branco, 1387<br>São Bernardo do Campo, SP</span><a class="link" href="https://www.google.com/maps/search/?api=1&query=Av.%20Humberto%20de%20Alencar%20Castelo%20Branco%2C%201387%2C%20S%C3%A3o%20Bernardo%20do%20Campo%20-%20SP" target="_blank" rel="noopener">Abrir no mapa</a></div>
-<div class="card"><span class="k">WhatsApp e telefone</span><span class="v">(11) 97772-7710</span><a class="link" href="https://wa.me/5511977727710?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener">Chamar no WhatsApp</a></div><div class="card"><span class="k">Instagram</span><span class="v">@castelo_scooter</span><a class="link" href="https://www.instagram.com/castelo_scooter/" target="_blank" rel="noopener">Ver o perfil</a></div></div></div></section>
-<section class="block reveal"><div class="wrap"><div class="final"><h2>Peça seu orçamento pelo WhatsApp</h2><a class="btn" href="https://wa.me/5511977727710?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener">Chamar agora</a></div></div></section>
+<section class="hero"><div class="wrap"><div class="reveal"><h1>Castelo Scooter</h1><p class="lede">Oficina especializada em scooter, em São Bernardo do Campo.</p><div class="cta-row"><a class="btn btn-primary" href="https://wa.me/5511977727710?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener">Pedir orçamento</a><a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Av.%20Humberto%20de%20Alencar%20Castelo%20Branco%2C%201387%2C%20S%C3%A3o%20Bernardo%20do%20Campo%20-%20SP" target="_blank" rel="noopener">Como chegar</a></div></div><div class="vis reveal"><div class="orb" aria-hidden="true"><div class="mono">CS</div></div><div class="badge">5,0 no Google</div></div></div></section>
+<section class="stats reveal" aria-label="Números"><div class="wrap"><div class="stat"><div class="n" data-to="5.0" data-d="1">5,0</div><div class="t">nota de 5 no Google</div></div><div class="stat"><div class="n" data-to="257" data-d="0" data-sep="1">257</div><div class="t">avaliações de clientes</div></div></div></section>
+<section class="block reveal" id="servicos"><div class="wrap"><h2>O que fazemos</h2><p class="sub">Toque em um serviço para pedir o orçamento pelo WhatsApp.</p><div class="services"><a class="svc" href="https://wa.me/5511977727710?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento%20de%3A%20Revis%C3%A3o%20completa." target="_blank" rel="noopener"><div><h3>Revisão completa</h3></div><div class="go">Pedir orçamento <span>&rarr;</span></div></a><a class="svc" href="https://wa.me/5511977727710?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento%20de%3A%20Manuten%C3%A7%C3%A3o%20preventiva%20e%20corretiva." target="_blank" rel="noopener"><div><h3>Manutenção preventiva e corretiva</h3></div><div class="go">Pedir orçamento <span>&rarr;</span></div></a><a class="svc" href="https://wa.me/5511977727710?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento%20de%3A%20Diagn%C3%B3stico%20avan%C3%A7ado." target="_blank" rel="noopener"><div><h3>Diagnóstico avançado</h3></div><div class="go">Pedir orçamento <span>&rarr;</span></div></a></div></div></section>
+<section class="block reveal" id="avaliacoes"><div class="wrap"><h2>O que dizem os clientes</h2><p class="sub">Avaliações reais de clientes no Google.</p><div class="reviews"><figure class="rev"><div class="stars" aria-label="5 estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>&ldquo;Mecânica de alta confiabilidade. Deixei minha moto pra fazer revisão. O dono (Felipe) é super correto, gravou vídeos e tirou fotos da peças que precisariam de troca, fez somente o serviço que eu precisava a preço justo (regulagem de válvulas). Recomendo&rdquo;</blockquote><figcaption class="who"><b>Diogo S.</b> &middot; há 5 meses</figcaption></figure><figure class="rev"><div class="stars" aria-label="5 estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>&ldquo;Depois de passar por várias oficinas, finalmente encontrei uma em que posso confiar de verdade. Atendimento extremamente atencioso, transparentes em tudo, preço justo e um cuidado com a moto que faz toda diferença.&rdquo;</blockquote><figcaption class="who"><b>Carlos M.</b> &middot; há 5 meses</figcaption></figure><figure class="rev"><div class="stars" aria-label="5 estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>&ldquo;Atendimento perfeito, comprometimento com o trabalho, sem enrolação. Deixei minha moto nessa oficina e ela voltou totalmente outra.&rdquo;</blockquote><figcaption class="who"><b>Nani M.</b> &middot; há 2 meses</figcaption></figure></div><p class="srcnote">Textos copiados das avaliações públicas no Google Maps.</p></div></section>
+<section class="block reveal" id="contato"><div class="wrap"><h2>Onde estamos</h2><p class="sub">Av. Humberto de Alencar Castelo Branco, 1387, São Bernardo do Campo.</p><div class="where"><div class="card"><div class="row"><span class="k">Endereço</span><span class="v">Av. Humberto de Alencar Castelo Branco, 1387<br>São Bernardo do Campo, SP</span></div><div class="row"><span class="k">WhatsApp e telefone</span><span class="v">(11) 97772-7710</span></div><div class="row"><span class="k">Instagram</span><span class="v">@castelo_scooter</span></div><a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Av.%20Humberto%20de%20Alencar%20Castelo%20Branco%2C%201387%2C%20S%C3%A3o%20Bernardo%20do%20Campo%20-%20SP" target="_blank" rel="noopener">Como chegar</a></div><div class="map"><iframe title="Mapa" src="https://www.google.com/maps?q=Av.%20Humberto%20de%20Alencar%20Castelo%20Branco%2C%201387%2C%20S%C3%A3o%20Bernardo%20do%20Campo%20-%20SP&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div></div></div></section>
+<section class="block reveal"><div class="wrap"><div class="final"><h2>Peça seu orçamento agora</h2><a class="btn" href="https://wa.me/5511977727710?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener">Pedir orçamento</a></div></div></section>
 </main>
 <footer><div class="wrap"><div><strong>Castelo Scooter</strong><br>Av. Humberto de Alencar Castelo Branco, 1387, São Bernardo do Campo - SP</div><div>(11) 97772-7710</div></div><div class="wrap"><p class="note">Esboço criado pela Smash Mídias com dados públicos da empresa (Google Maps e Instagram @castelo_scooter). Sujeito a ajustes pelo proprietário.</p></div></footer>
+<div class="fab"><a class="btn btn-primary" href="https://wa.me/5511977727710?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener">Pedir orçamento</a></div>
 <script>
-(function(){var els=document.querySelectorAll('.reveal');if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
-var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});
-els.forEach(function(e){io.observe(e)})})();
+(function(){
+var els=document.querySelectorAll('.reveal');
+if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')})}
+else{var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});els.forEach(function(e){io.observe(e)})}
+var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+function fmt(v,d){return v.toFixed(d).replace('.',',')}
+function count(el){var t=parseFloat(el.getAttribute('data-to')),d=parseInt(el.getAttribute('data-d')||'0',10),sep=el.getAttribute('data-sep')==='1';
+ if(reduce){el.textContent=sep?Math.round(t).toString():fmt(t,d);return}
+ var s=performance.now(),dur=1400;
+ function f(n){var p=Math.min(1,(n-s)/dur),e=1-Math.pow(1-p,3),v=t*e;el.textContent=sep?Math.round(v).toString():fmt(v,d);if(p<1)requestAnimationFrame(f)}
+ requestAnimationFrame(f)}
+var cs=document.querySelectorAll('[data-to]');
+if('IntersectionObserver' in window){var io2=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){count(x.target);io2.unobserve(x.target)}})},{threshold:.6});cs.forEach(function(c){io2.observe(c)})}
+else{cs.forEach(count)}
+})();
 </script>
 </body>
 </html>
